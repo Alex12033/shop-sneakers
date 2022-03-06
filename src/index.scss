@@ -1,0 +1,144 @@
+body {
+   margin: 0;
+   font-family: 'Inter' ,system-ui;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   background-color: #e7f6ff;
+}
+
+.clear {
+    * {
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style-type: none;
+    }
+}
+
+.wrapper {
+    background: #ffffff;
+    box-shadow: 0 10 20 rgba 0, 0, 0, 0.24;
+    border-radius: 20px;
+    max-width: 75%;
+    margin: 3rem auto;
+    padding: 40px; 
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(172, 169, 169);
+    padding-bottom: 30px;
+
+
+ 
+    ul {
+        display: flex; 
+    } 
+
+    ul li{
+        margin-right: 30px;
+    }
+     
+    .headerLeft {
+        display: flex;
+        align-items: center;
+
+        img {
+            margin-right: 15px;
+        }
+
+        h3 {
+            margin: 0 auto;
+        } 
+        
+        p {
+            margin: 0 auto;
+            opacity: 0.33;
+        }
+
+        h3 {
+            text-transform: uppercase;
+        }
+    }
+
+    .headerRight span{
+        margin-left: 10px;
+    }
+}
+
+.content {
+    padding: 40px 0px 40px 0px;
+    
+
+    h1 {
+        margin: 0;
+        margin-bottom: 40px;
+    }
+} 
+
+.sneakers {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 1px solid #f2f2f2;
+    padding: 30px;
+    width: 220px;
+    border-radius: 40px;
+    margin: 0px 14px 14px 0px;
+
+    span {
+        font-size: 12;
+        opacity: 0.5;
+        text-transform: uppercase;
+    }
+
+    b {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-weight: 400;
+        font-size: 13px;
+    }
+    
+    .cardBottom {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .priceCard {
+        display: flex;
+        align-items: center;
+
+        b {
+            margin-left: 2px;
+        } 
+    }
+
+    button {
+        background-color: #ffffff;
+        border: 1px solid #f2f2f2;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
+        margin-left: 3px;
+    }
+}
