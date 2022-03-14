@@ -20,10 +20,18 @@ function App() {
         </ul>
       </header>
       <div className="content">
-        <h1>All Sneakers</h1>
-
+        <div className="title-search">
+          <h1>All Sneakers</h1>
+          <div className="search-block">
+            <img src="/img/search.svg" alt="search" />
+            <input placeholder="Search..." />
+          </div>
+        </div>
         <div className="sneakers">
           <div className="card">
+            <div className="favorite">
+              <img src="/img/unliked.svg" alt="unliked" />
+            </div>
             <img width="133" height="122" src="/img/sneakers/1.jpg" alt="" />
             <h5>Man sneakers Nike Blazer Mid Seude</h5>
             <div className="cardBottom">
