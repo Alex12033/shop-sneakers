@@ -110,6 +110,7 @@ header {
 .sneakers {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .card {
@@ -117,7 +118,7 @@ header {
     padding: 30px;
     width: 220px;
     border-radius: 40px;
-    margin: 0px 14px 14px 0px;
+    margin: 0px 5px 14px 5px;
     transition: box-shadow 0.2s ease-in-out;
     transition: 0.2s ease-in-out;
 
