@@ -3,6 +3,12 @@ import Drawer from "./components/Drawer";
 import Header from "./components/Header";
 
 function App() {
+  const card = [
+    { name: "Man sneakers Nike Mid Seude", price: "12 999$", key: "1" },
+    { name: "Man sneakers Mid Seude", price: "12 40$", key: "2" },
+    { name: "Man sneakers Nike Blazer", price: "12 444$", key: "3" },
+  ];
+
   return (
     <div className="wrapper clear">
       <Drawer />
@@ -15,9 +21,14 @@ function App() {
             <input placeholder="Search..." />
           </div>
         </div>
-        <Card />
+
+        <div className="sneakers">
+          {card.map((val, key) => (
+            <Card name={val.name} price={val.price} key={val.key} />
+          ))}
+        </div>
       </div>
-    </div>
+    </div> 
   );
 }
 

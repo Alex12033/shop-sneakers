@@ -114,6 +114,9 @@ header {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border: 1px solid #f2f2f2;
     padding: 30px;
     width: 220px;
