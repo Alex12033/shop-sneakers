@@ -4,9 +4,66 @@ import Header from "./components/Header";
 
 function App() {
   const card = [
-    { name: "Man sneakers Nike Mid Seude", price: "12 999$", key: "1" },
-    { name: "Man sneakers Mid Seude", price: "12 40$", key: "2" },
-    { name: "Man sneakers Nike Blazer", price: "12 444$", key: "3" },
+    {
+      name: "Man sneakers Nike Mid Seude",
+      price: "12 999$",
+      key: "1",
+      src: "/img/sneakers/1.jpg",
+    },
+    {
+      name: "Man sneakers Mid Seude",
+      price: "12 40$",
+      key: "2",
+      src: "/img/sneakers/2.jpg",
+    },
+    {
+      name: "Man sneakers Nike Blazer",
+      price: "12 444$",
+      key: "3",
+      src: "/img/sneakers/3.jpg",
+    },
+    {
+      name: "Man sneakers Nike Blazer",
+      price: "12 444$",
+      key: "3",
+      src: "/img/sneakers/4.jpg",
+    },
+    {
+      name: "Man sneakers Nike Blazer",
+      price: "12 444$",
+      key: "3",
+      src: "/img/sneakers/5.jpg",
+    },
+    {
+      name: "Man sneakers Nike Blazer",
+      price: "12 444$",
+      key: "3",
+      src: "/img/sneakers/6.jpg",
+    },
+    {
+      name: "Man sneakers Nike Blazer",
+      price: "12 444$",
+      key: "3",
+      src: "/img/sneakers/7.jpg",
+    },
+    {
+      name: "Man sneakers Nike Blazer",
+      price: "12 444$",
+      key: "3",
+      src: "/img/sneakers/8.jpg",
+    },
+    {
+      name: "Man sneakers Nike Blazer",
+      price: "12 444$",
+      key: "3",
+      src: "/img/sneakers/9.jpg",
+    },
+    {
+      name: "Man sneakers Nike Blazer",
+      price: "12 444$",
+      key: "3",
+      src: "/img/sneakers/10.jpg",
+    },
   ];
 
   return (
@@ -23,12 +80,17 @@ function App() {
         </div>
 
         <div className="sneakers">
-          {card.map((val, key) => (
-            <Card name={val.name} price={val.price} key={val.key} />
+          {card.map((obj) => (
+            <Card
+              name={obj.name}
+              price={obj.price}
+              key={obj.key}
+              src={obj.src}
+            />
           ))}
         </div>
       </div>
-    </div> 
+    </div>
   );
 }
 
