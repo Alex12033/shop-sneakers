@@ -1,12 +1,13 @@
 import React from "react";
 
-function Drawer() {
+function Drawer({onClose}) {
+  
   return (
-    <div style={{ display: "none" }} className="overlay">
+    <div className="overlay">
       <div className="drawer">
         <h2>
-          Cart{" "}
-          <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
+          Cart
+          <img onClick={onClose} className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
         </h2>
         <div className="scroll">
           <div className="cartItem">

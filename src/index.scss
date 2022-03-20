@@ -41,6 +41,7 @@ button, input {
 
     li {
         list-style-type: none;
+        cursor: pointer;
     }
 }
 
@@ -164,15 +165,21 @@ header {
         } 
     }
 
-    button {
+    .button {
+        width: 11px;
+        height: 11px;
         background-color: #ffffff;
         border: 1px solid #f2f2f2;
         box-sizing: border-box;
         border-radius: 8px;
-        height: 32px;
-        width: 32px;
+        height: 25px;
+        width: 25px;
         cursor: pointer;
-        margin-left: 3px;
+        margin-left: 12px;
+    }
+
+    .checked {
+        margin: -2px -7px;
     }
 }
 

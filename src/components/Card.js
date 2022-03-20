@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Card({name, price, src}) {
-  const onClickButton = () => {
-    alert('smvklsmdv');
-  }
+function Card({ name, price, src }) {
+  const [isAdded, setIsAdded] = useState(false);
+
+  const onClickPlus = () => {
+    setIsAdded(!isAdded);
+  };
+
   return (
     <div className="card">
       <div className="favorite">
@@ -16,9 +19,12 @@ function Card({name, price, src}) {
           <span>Price:</span>
           <b>{price}</b>
           <div>
-            <button onClick={onClickButton}>
-              <img width="11" height="11" src="/img/plus.svg" alt="plus" />
-            </button>
+            <img
+              className="button"
+              onClick={onClickPlus}
+              src={isAdded ? "/img/btn-checked.svg" : "/img/plus.svg"}
+              alt="plus"
+            />
           </div>
         </div>
       </div>
