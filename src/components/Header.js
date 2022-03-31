@@ -1,6 +1,7 @@
 import React from "react";
+import TotalCartPrice from "./TotalCartPrice";
 
-function Header({displayCart}) {
+function Header({displayCart, totalPrice}) {
   
   return (
     <header>
@@ -19,7 +20,7 @@ function Header({displayCart}) {
             src="/img/cart.svg"
             alt="logo"
           />
-          <span> 1205 $ </span>
+          <span><TotalCartPrice totalPrice={totalPrice}/></span>
         </li>
         <li>
           <img width="18" height="18" src="/img/user.svg" alt="logo" />

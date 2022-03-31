@@ -1,126 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import TotalCartPrice from "./TotalCartPrice";
 
-function Drawer({onClose}) {
-  
+function Drawer({ onClose, items, totalPrice, onDeleteFromCart }) {
+  const [removeItem, setRemoveItem] = useState([]);
+
+  useEffect(() => setRemoveItem(items), [items]);
+
+  const deleteFromCart = (key) => {
+    setRemoveItem(removeItem.filter((item) => item.objKey !== key));
+
+    onDeleteFromCart(key);
+  };
+
   return (
     <div className="overlay">
       <div className="drawer">
         <h2>
           Cart
-          <img onClick={onClose} className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
+          <img
+            onClick={onClose}
+            className="removeBtn"
+            src="/img/btn-remove.svg"
+            alt="Remove"
+          />
         </h2>
         <div className="scroll">
-          <div className="cartItem">
-            <img
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            />
-            <div className="titlePrice">
-              <p>Man sneakers Nike Blazer Mid Seude</p>
-              <b>12 999$</b>
+          {removeItem.map((obj) => (
+            <div className="cartItem">
+              <img width={70} height={70} src={obj.src} alt="Sneakers" />
+              <div className="titlePrice">
+                <p>{obj.name}</p>
+                <b>{obj.price}$</b>
+              </div>
+              <div className="columnCartCloseCount">
+                <img
+                  onClick={() => deleteFromCart(obj)}
+                  className="removeBtn"
+                  src="/img/btn-remove.svg"
+                  alt="Remove"
+                />
+
+                <div className="countInCart">
+                  <p>9 <span>pcs</span></p>
+                </div>
+              </div>
             </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem">
-            <img
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            />
-            <div className="titlePrice">
-              <p>Man sneakers Nike Blazer Mid Seude</p>
-              <b>12 999$</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem">
-            <img
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            />
-            <div className="titlePrice">
-              <p>Man sneakers Nike Blazer Mid Seude</p>
-              <b>12 999$</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem">
-            <img
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            />
-            <div className="titlePrice">
-              <p>Man sneakers Nike Blazer Mid Seude</p>
-              <b>12 999$</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem">
-            <img
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            />
-            <div className="titlePrice">
-              <p>Man sneakers Nike Blazer Mid Seude</p>
-              <b>12 999$</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem">
-            <img
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            />
-            <div className="titlePrice">
-              <p>Man sneakers Nike Blazer Mid Seude</p>
-              <b>12 999$</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem">
-            <img
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            />
-            <div className="titlePrice">
-              <p>Man sneakers Nike Blazer Mid Seude</p>
-              <b>12 999$</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem">
-            <img
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            />
-            <div className="titlePrice">
-              <p>Man sneakers Nike Blazer Mid Seude</p>
-              <b>12 999$</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
+          ))}
         </div>
         <div className="items">
           <ul className="cartTotalBlock">
             <li>
               <span>Total:</span>
               <div></div>
-              <b>21 400$</b>
+              <TotalCartPrice totalPrice={totalPrice} />
             </li>
             <li>
               <span>Tax 5%:</span>
