@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import Drawer from "./components/Drawer";
@@ -14,25 +15,29 @@ function App() {
 
   const [totalPrice, setTotalPrice] = useState([]);
 
-  
-  const filterItems = (items, obj) => {
-    return items.filter((item) => item.objKey !== obj.objKey);
-  };
+  const [countSneakers, setCountSneakers] = useState([]);
 
-  const removeDuplicate = (data, key) => {
-    return [...new Map(data.map((x) => [key(x), x])).values()];
-  };
-
-  
   useEffect(() => {
-    fetch("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/items")
+    axios
+      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/items")
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setCard(json);
+        setCard(res.data);
+      });
+
+    axios
+      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/cart")
+      .then((res) => {
+        setCartItems(res.data);
       });
   }, []);
+
+  const filterItems = (items, id) => {
+    return items.filter((item) => item.id !== id);
+  };
+
+  // const removeDuplicate = (data, key) => {
+  //   return [...new Map(data.map((item) => [key(item), item])).values()];
+  // };
 
   const onDisplayCart = () => {
     let html = document.querySelector("html");
@@ -47,40 +52,28 @@ function App() {
   };
 
   const onAddToCart = (obj) => {
+    axios.post("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/cart", obj);
     setCartItems((prev) => [...prev, obj]);
   };
+  console.log(cartItems);
 
-  const onMinusCartItem = (id) => {
-    //when we click on minus button this method in cart takes away item with his price from cart
-    //in id we transfer in method type object
-    setCartItems(() => filterItems(cartItems, id));
-
-    setTotalPrice(() => filterItems(totalPrice, id));
-  };
-
-  const renewedItemsForDrawer = (key) => {
-    //this method take key from drawer and filter item in cart by key
-    setCartItems(() => filterItems(cartItems, key));
+  const onRemoveItemFromCart = (id) => {
+    //axios.delete(`https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/cart/${id}`);
+    setCartItems((prev) => filterItems(prev, id));
   };
 
   const onChangeSearchInput = (e) => {
     setSearchValue(e.target.value);
   };
 
-  const getTotalPrice = (obj) => {
-    setTotalPrice((prev) => [...prev, obj]);
-  };
-
   return (
     <div className="wrapper clear">
       {displayCart && (
         <Drawer
-          items={removeDuplicate(cartItems, key => key.objKey)}
+          items={cartItems}
           onClose={onCloseCart}
-          totalPrice={totalPrice}
-          onDeleteFromCart={(idElemRemove) =>
-            renewedItemsForDrawer(idElemRemove)
-          }
+          countSneakers={countSneakers}
+          onDeleteFromCart={onRemoveItemFromCart}
         />
       )}
       <Header displayCart={onDisplayCart} totalPrice={totalPrice} />
@@ -108,18 +101,20 @@ function App() {
         </div>
 
         <div className="sneakers">
-          {card.map((obj) => (
-            <Card
-              objKey={obj.key}
-              name={obj.name}
-              price={obj.price}
-              key={obj.key}
-              src={obj.src}
-              onPlus={(obj) => onAddToCart(obj)}
-              onMinus={(obj) => onMinusCartItem(obj)}
-              getPrice={(obj) => getTotalPrice(obj)}
-            />
-          ))}
+          {card
+            .filter((item) =>
+              item.name.toLowerCase().includes(searchValue.toLowerCase())
+            )
+            .map((obj) => (
+              <Card
+                objKey={obj.key}
+                name={obj.name}
+                price={obj.price}
+                key={obj.key}
+                src={obj.src}
+                onPlus={(obj) => onAddToCart(obj)}
+              />
+            ))}
         </div>
       </div>
     </div>

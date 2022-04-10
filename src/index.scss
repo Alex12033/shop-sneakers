@@ -11,7 +11,6 @@ width: 0px;  /* remove scrollbar space */
 background: transparent;  /* optional: just make scrollbar invisible */
 }
 
-
 button, input {
     font-family: 'Inter' ,system-ui;
 }
@@ -138,27 +137,6 @@ header {
         cursor: pointer;
     }
 
-    .count {
-        margin-right: 110px;
-        width: 30px;
-        height: 30px;
-        .countAdded {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 30px;
-            height: 30px;
-            background-color: rgb(199, 235, 243);
-            opacity: 0.6;
-            margin-left: 8em;
-            border-radius: 100px;
-                
-                p {
-                    font-weight: 600;
-                }
-        }
-    }
-
     span {
         font-size: 12;
         opacity: 0.5;
@@ -186,7 +164,7 @@ header {
         justify-content: space-between;
 
         b {
-            margin-left: 4px;
+            margin-left: 8px;
         } 
 
         div {
@@ -200,10 +178,10 @@ header {
         border: 1px solid #f2f2f2;
         box-sizing: border-box;
         border-radius: 8px;
-        height: 25px;
-        width: 25px;
+        height: 28px;
+        width: 28px;
         cursor: pointer;
-        margin-left: 10px;
+        margin: 0px 0px 3px 20px;
     }
 }
 
@@ -257,29 +235,42 @@ header {
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     padding: 30px;
 
-    .columnCartCloseCount {
+    .emptyCart {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
+        flex-direction: column;
+        margin-top: 330px;
 
-        .countInCart {
-            p {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                border-radius: 100px;
-                font-weight: 700;
-                background-color: rgb(132, 208, 235);
-                width: 55px;
-                height: 20px;
 
-                span {
-                    font-weight: 300;
-                    margin-left: 3px;
-                }
+        .cartImg {
+            margin: 0 auto;
+            width: 120px;
+            height: 120px;
+        }
+
+        .greenButton {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 245px;
+            margin-top: 20px;
+
+            .arrow {
+                margin-top: 10px;
+                transition: 0.4s ease-in-out;
             }
-            
+        }
+
+        .greenButton:hover {
+            .arrow {
+                transform: rotate(180deg);
+                transition: 0.4s ease-in-out;
+            }
+        }
+
+        p {
+            opacity: 0.90;
         }
     }
     

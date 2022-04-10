@@ -1,35 +1,26 @@
 import React, { useState } from "react";
 
-function Card({ objKey, name, price, src, onPlus, getPrice, onMinus }) {
-  const [isAdded, setIsAdded] = useState(0);
-  
-  const onClickPlus = () => {
-    onPlus({ name, price, src, objKey}); //send info for display card in cart drawer
-    getPrice({ price, objKey }); //send price into cart drawer and cart on main page
-    setIsAdded(isAdded + 1); //counter card
-  };
+function Card({
+  objKey,
+  name,
+  price,
+  src,
+  onPlus,
+}) {
 
-  const onClickMinus = () => {
-    if (isAdded > 0) {
-      setIsAdded(isAdded-1);
-      onMinus({objKey});
-    }
-  };
+  const [checked, setChecked] = useState(true);
+
+  function onClickPlus() {
+    setChecked(!checked);
+    onPlus({ name, price, src, objKey }); //send info for display card in cart drawer    
+  }
 
   return (
     <div className="card">
       <div className="favorite">
         <img src="/img/unliked.svg" alt="unliked" />
       </div>
-      <div className="count">
-        {isAdded === 0
-        ? false
-        : true && (
-            <div className="countAdded">
-              <p>{isAdded}</p>
-            </div>
-          )}
-      </div>
+
       <img width="133" height="122" src={src} alt="" />
       <h5>{name}</h5>
       <div className="cardBottom">
@@ -40,13 +31,7 @@ function Card({ objKey, name, price, src, onPlus, getPrice, onMinus }) {
             <img
               className="button"
               onClick={onClickPlus}
-              src="/img/plus.svg"
-              alt="plus"
-            />
-            <img
-              className="button"
-              onClick={onClickMinus}
-              src="/img/minus.svg"
+              src={checked ? "/img/plus.svg" : "/img/btn-checked.svg"}
               alt="plus"
             />
           </div>

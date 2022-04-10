@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import ItemsCart from "./ItemsCart";
+import EmptyCart from "./EmptyCart";
 import TotalCartPrice from "./TotalCartPrice";
 
-function Drawer({ onClose, items, totalPrice, onDeleteFromCart }) {
-  const [removeItem, setRemoveItem] = useState([]);
-
-  useEffect(() => setRemoveItem(items), [items]);
-
-  const deleteFromCart = (key) => {
-    setRemoveItem(removeItem.filter((item) => item.objKey !== key));
-
-    onDeleteFromCart(key);
-  };
-
+function Drawer({ onClose, items, onDeleteFromCart }) {
   return (
     <div className="overlay">
       <div className="drawer">
@@ -24,35 +16,19 @@ function Drawer({ onClose, items, totalPrice, onDeleteFromCart }) {
             alt="Remove"
           />
         </h2>
-        <div className="scroll">
-          {removeItem.map((obj) => (
-            <div className="cartItem">
-              <img width={70} height={70} src={obj.src} alt="Sneakers" />
-              <div className="titlePrice">
-                <p>{obj.name}</p>
-                <b>{obj.price}$</b>
-              </div>
-              <div className="columnCartCloseCount">
-                <img
-                  onClick={() => deleteFromCart(obj)}
-                  className="removeBtn"
-                  src="/img/btn-remove.svg"
-                  alt="Remove"
-                />
 
-                <div className="countInCart">
-                  <p>9 <span>pcs</span></p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {items.length > 0 ? (
+          <ItemsCart items={items} onDeleteFromCart={onDeleteFromCart} />
+        ) : (
+          <EmptyCart />
+        )}
+
         <div className="items">
           <ul className="cartTotalBlock">
             <li>
               <span>Total:</span>
               <div></div>
-              <TotalCartPrice totalPrice={totalPrice} />
+              <TotalCartPrice totalPrice={[]} />
             </li>
             <li>
               <span>Tax 5%:</span>
