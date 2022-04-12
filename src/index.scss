@@ -85,8 +85,14 @@ header {
         }
     }
 
-    .headerRight span{
+    .headerRight 
+    
+    span{
         margin-left: 10px;
+    }
+
+    .heartBookmark {
+        margin-right: 35px;
     }
 }
 
@@ -264,7 +270,7 @@ header {
 
         .greenButton:hover {
             .arrow {
-                transform: rotate(180deg);
+                transform: rotate(-180deg);
                 transition: 0.4s ease-in-out;
             }
         }
@@ -340,7 +346,8 @@ header {
 
     .cartItem {
         display: flex;
-        align-items: center; 
+        align-items: center;
+        justify-content: space-between; 
         border: 1px solid #f3f3f3;
         border-radius: 20px;
         overflow: hidden;

@@ -1,7 +1,7 @@
 import React from "react";
 import ItemsCart from "./ItemsCart";
 import EmptyCart from "./EmptyCart";
-import TotalCartPrice from "./TotalCartPrice";
+import TotalPriceBlock from "./TotalPriceBlock";
 
 function Drawer({ onClose, items, onDeleteFromCart }) {
   return (
@@ -16,31 +16,15 @@ function Drawer({ onClose, items, onDeleteFromCart }) {
             alt="Remove"
           />
         </h2>
-
+        {/* {console.log(items, 'drawer')} */}
         {items.length > 0 ? (
-          <ItemsCart items={items} onDeleteFromCart={onDeleteFromCart} />
+          <>
+            <ItemsCart items={items} onDeleteFromCart={onDeleteFromCart} />
+            <TotalPriceBlock />
+          </>
         ) : (
-          <EmptyCart />
+          <EmptyCart onGoBack={onClose} />
         )}
-
-        <div className="items">
-          <ul className="cartTotalBlock">
-            <li>
-              <span>Total:</span>
-              <div></div>
-              <TotalCartPrice totalPrice={[]} />
-            </li>
-            <li>
-              <span>Tax 5%:</span>
-              <div></div>
-              <b>1040$</b>
-            </li>
-          </ul>
-          <button className="greenButton">
-            Check order{" "}
-            <img className="arrow" src="/img/arrow.svg" alt="arrow" />
-          </button>
-        </div>
       </div>
     </div>
   );

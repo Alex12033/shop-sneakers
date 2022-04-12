@@ -1,5 +1,4 @@
 import React from "react";
-import TotalCartPrice from "./TotalCartPrice";
 
 function Header({displayCart, totalPrice}) {
   
@@ -20,10 +19,13 @@ function Header({displayCart, totalPrice}) {
             src="/img/cart.svg"
             alt="logo"
           />
-          <span><TotalCartPrice totalPrice={totalPrice}/></span>
+          <span>456</span>
+        </li>
+        <li className="heartBookmark">
+          <img width="18" height="18" src="/img/heart.svg" alt="heart" />
         </li>
         <li>
-          <img width="18" height="18" src="/img/user.svg" alt="logo" />
+          <img width="18" height="18" src="/img/user.svg" alt="user" />
         </li>
       </ul>
     </header>

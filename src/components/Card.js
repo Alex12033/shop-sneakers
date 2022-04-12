@@ -1,24 +1,32 @@
 import React, { useState } from "react";
 
-function Card({
-  objKey,
-  name,
-  price,
-  src,
-  onPlus,
-}) {
-
+function Card({name, price, src, id, onPlus, onLike }) {
+  
   const [checked, setChecked] = useState(true);
+  const [onFavorite, setOnFavorite] = useState(true);
 
   function onClickPlus() {
     setChecked(!checked);
-    onPlus({ name, price, src, objKey }); //send info for display card in cart drawer    
+    if (checked) {
+      onPlus({name, price, src}); //send info for display card in cart drawer
+    }
   }
+
+  const onLikeClick = () => {
+    setOnFavorite(!onFavorite);
+    if (onFavorite) {
+      onLike({name, price, src});
+    }
+  };
 
   return (
     <div className="card">
       <div className="favorite">
-        <img src="/img/unliked.svg" alt="unliked" />
+        <img
+          onClick={onLikeClick}
+          src={onFavorite ? "/img/unliked.svg" : "/img/liked.svg" }
+          alt="unliked"
+        />
       </div>
 
       <img width="133" height="122" src={src} alt="" />

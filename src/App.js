@@ -13,23 +13,22 @@ function App() {
 
   const [displayCart, setDisplayCart] = useState(false);
 
-  const [totalPrice, setTotalPrice] = useState([]);
-
-  const [countSneakers, setCountSneakers] = useState([]);
+  const [like, setLike] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/items")
+      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items")
       .then((res) => {
         setCard(res.data);
       });
 
     axios
-      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/cart")
+      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/cart")
       .then((res) => {
         setCartItems(res.data);
       });
   }, []);
+  console.log(cartItems, 'value cartitems');
 
   const filterItems = (items, id) => {
     return items.filter((item) => item.id !== id);
@@ -52,14 +51,26 @@ function App() {
   };
 
   const onAddToCart = (obj) => {
-    axios.post("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/cart", obj);
+    console.log(obj);
+    axios.post("https://6236f38ff5f6e28a1547bdc4.mockapi.io/cart", obj);
     setCartItems((prev) => [...prev, obj]);
   };
-  console.log(cartItems);
+  
 
   const onRemoveItemFromCart = (id) => {
-    //axios.delete(`https://6236f38ff5f6e28a1547bdc4.mockapi.io/items/cart/${id}`);
+    console.log(id);
+    axios.delete(
+      `https://6236f38ff5f6e28a1547bdc4.mockapi.io/cart/${id}`
+    );
     setCartItems((prev) => filterItems(prev, id));
+  };
+
+  const onAddLike = (obj) => {
+    axios.post(
+      "https://6236f38ff5f6e28a1547bdc4.mockapi.io/favorites",
+      obj
+    );
+    setLike((prev) => [...prev, obj]);
   };
 
   const onChangeSearchInput = (e) => {
@@ -72,11 +83,10 @@ function App() {
         <Drawer
           items={cartItems}
           onClose={onCloseCart}
-          countSneakers={countSneakers}
           onDeleteFromCart={onRemoveItemFromCart}
         />
       )}
-      <Header displayCart={onDisplayCart} totalPrice={totalPrice} />
+      <Header displayCart={onDisplayCart} />
       <div className="content">
         <div className="title-search">
           <h1>
@@ -99,7 +109,6 @@ function App() {
             />
           </div>
         </div>
-
         <div className="sneakers">
           {card
             .filter((item) =>
@@ -107,12 +116,13 @@ function App() {
             )
             .map((obj) => (
               <Card
-                objKey={obj.key}
+                id={obj.id}
                 name={obj.name}
                 price={obj.price}
-                key={obj.key}
+                key={obj.id}
                 src={obj.src}
                 onPlus={(obj) => onAddToCart(obj)}
+                onLike={(obj) => onAddLike(obj)}
               />
             ))}
         </div>
