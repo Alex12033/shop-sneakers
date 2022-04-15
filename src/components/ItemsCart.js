@@ -1,7 +1,6 @@
 import React from "react";
 
 function ItemsCart({ items, onDeleteFromCart }) {
-  console.log(items);
   return (
     <div className="scroll">
       {items.map((obj) => (
