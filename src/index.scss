@@ -98,7 +98,6 @@ header {
 
 .content {
     padding: 40px 0px 40px 0px;
-    
 
     h1 {
         margin: 0;
@@ -113,81 +112,80 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #f2f2f2;
-    padding: 20px;
-    width: 220px;
-    border-radius: 40px;
-    margin: 0px 15px 15px 15px;
-    transition: box-shadow 0.2s ease-in-out;
-    transition: 0.2s ease-in-out; 
-
-    img {
-        margin-top: 5px;
-    }
-
-    &:hover {
-        box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.08);
-        transform: translateY(-5px);
-    }
-
-    .favorite {
-        position: absolute;
-        margin-right: 120px;
-        cursor: pointer;
-    }
-
-    span {
-        font-size: 12;
-        opacity: 0.5;
-        text-transform: uppercase;
-    }
-
-    b {
-        font-size: 15px;
-    }
-
-    h5 {
-        font-weight: 400;
-        font-size: 13px;
-        text-align: center;
-    }
-    
-    .cardBottom {
+    .card {
         display: flex;
         flex-direction: column;
-    }
-
-    .priceCard {
-        display: flex;
-        align-items: center;
         justify-content: space-between;
-
-        b {
-            margin-left: 8px;
-        } 
-
-        div {
-            display: flex;
-            flex-direction: row;
-        }
-    }
-
-    .button {
-        background-color: #ffffff;
+        align-items: center;
         border: 1px solid #f2f2f2;
-        box-sizing: border-box;
-        border-radius: 8px;
-        height: 28px;
-        width: 28px;
-        cursor: pointer;
-        margin: 0px 0px 3px 20px;
+        padding: 20px;
+        width: 220px;
+        border-radius: 40px;
+        margin: 0px 15px 15px 15px;
+        transition: box-shadow 0.2s ease-in-out;
+        transition: 0.2s ease-in-out; 
+    
+        img {
+            margin-top: 5px;
+        }
+    
+        &:hover {
+            box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+    
+        .favorite {
+            position: absolute;
+            margin-right: 120px;
+            cursor: pointer;
+        }
+
+        span {
+            font-size: 12;
+            opacity: 0.5;
+            text-transform: uppercase;
+        }
+    
+        b {
+            font-size: 15px;
+        }
+    
+        h5 {
+            font-weight: 400;
+            font-size: 13px;
+            text-align: center;
+        }
+        
+        .cardBottom {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .priceCard {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+    
+            b {
+                margin-left: 8px;
+            } 
+    
+            div {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    
+        .button {
+            background-color: #ffffff;
+            border: 1px solid #f2f2f2;
+            box-sizing: border-box;
+            border-radius: 8px;
+            height: 28px;
+            width: 28px;
+            cursor: pointer;
+            margin: 0px 0px 3px 20px;
+        }
     }
 }
 
@@ -224,8 +222,7 @@ header {
     position: absolute;
     height: 100%;
     width: 100%;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.86);
     left: 0;
     top: 0;
     bottom: 0;
