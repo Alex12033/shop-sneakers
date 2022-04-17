@@ -13,18 +13,18 @@ function Drawer() {
 
   useEffect(() => {
     axios
-      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/cart")
+      .get("http://localhost:8000/cart")
       .then((res) => {
         setCartItems(res.data);
       });
   }, []);
-  console.log(cartItems);
 
   const filterItems = (items, id) => {
     return items.filter((item) => item.id !== id);
   };
+
   const onRemoveItemFromCart = (id) => {
-    axios.delete(`https://6236f38ff5f6e28a1547bdc4.mockapi.io/cart/${id}`);
+    axios.delete(`http://localhost:8000/cart/${id}`);
     setCartItems((prev) => filterItems(prev, id));
   };
   return (
@@ -37,10 +37,13 @@ function Drawer() {
             <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
           </Link>
         </h2>
-        {/* {console.log(items, 'drawer')} */}
+
         {cartItems.length > 0 ? (
           <>
-            <ItemsCart items={cartItems} onDeleteFromCart={onRemoveItemFromCart} />
+            <ItemsCart
+              items={cartItems}
+              onDeleteFromCart={onRemoveItemFromCart}
+            />
             <TotalPriceBlock />
           </>
         ) : (

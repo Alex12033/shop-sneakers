@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header({ displayCart, totalPrice }) {
+function Header() {
   return (
     <header>
       <Link to="/">

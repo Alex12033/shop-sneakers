@@ -9,18 +9,29 @@ import Favorites from "./pages/Favorites";
 function App() {
   const [card, setCard] = useState([]);
 
+  // eslint-disable-next-line no-unused-vars
   const [cartItems, setCartItems] = useState([]);
 
   const [searchValue, setSearchValue] = useState("");
 
-  console.log(window.location.href);
+  const [isLoading, setIsLoading] = useState(true);
+
+  //console.log(window.location.href);
 
   useEffect(() => {
-    axios
-      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/items")
-      .then((res) => {
-        setCard(res.data);
-      });
+    async function fetchData() {
+      const data = await axios.get(
+        "http://localhost:8000/items"
+      );
+
+      setCard(data.data);
+    }
+    fetchData();
+    
+    setTimeout(() => {
+      //it wrong! LATER i fix it!
+      setIsLoading(false);
+    }, 1000);
   }, []);
 
   // const removeDuplicate = (data, key) => {
@@ -28,12 +39,19 @@ function App() {
   // };
 
   const onAddToCart = (obj) => {
-    axios.post("https://6236f38ff5f6e28a1547bdc4.mockapi.io/cart", obj);
-    setCartItems((prev) => [...prev, obj]);
+    if (obj.checked) {
+      axios.post("http://localhost:8000/cart", obj);
+      setCartItems((prev) => [...prev, obj]);
+    } else {
+      //if obj.unchecked = false delete from cart on obj.id
+      axios.delete(
+        `http://localhost:8000/cart/${obj.id}`
+      );
+    }
   };
 
   const onAddLike = (obj) => {
-    axios.post("https://6236f38ff5f6e28a1547bdc4.mockapi.io/favorites", obj);
+    axios.post("http://localhost:8000/favorites", obj);
   };
 
   const onChangeSearchInput = (e) => {
@@ -44,13 +62,7 @@ function App() {
     <div className="wrapper clear">
       <Header />
       <Routes>
-        <Route
-          path="/drawer"
-          element={
-            <Drawer />
-          }
-          exact
-        />
+        <Route path="/drawer" element={<Drawer />} exact />
 
         <Route
           path="/favorites"
@@ -74,6 +86,7 @@ function App() {
               card={card}
               onAddToCart={onAddToCart}
               onAddLike={onAddLike}
+              isLoading={isLoading}
             />
           }
           exact

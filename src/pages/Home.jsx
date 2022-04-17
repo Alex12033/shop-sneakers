@@ -8,6 +8,7 @@ function Home({
   card,
   onAddToCart,
   onAddLike,
+  isLoading,
 }) {
   return (
     <div className="content">
@@ -47,6 +48,7 @@ function Home({
               src={obj.src}
               onPlus={(obj) => onAddToCart(obj)}
               onLike={(obj) => onAddLike(obj)}
+              isLoading={isLoading}
             />
           ))}
       </div>

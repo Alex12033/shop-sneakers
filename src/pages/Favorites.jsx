@@ -7,7 +7,7 @@ function Favorites({ searchValue, setSearchValue, onChangeSearchInput }) {
 
   useState(() => {
     axios
-      .get("https://6236f38ff5f6e28a1547bdc4.mockapi.io/favorites")
+      .get("http://localhost:8000/favorites")
       .then((res) => {
         setFavorites(res.data);
       });
@@ -15,7 +15,7 @@ function Favorites({ searchValue, setSearchValue, onChangeSearchInput }) {
 
   const onRemoveFavorites = (obj) => {
     axios.delete(
-      `https://6236f38ff5f6e28a1547bdc4.mockapi.io/favorites/${obj.id}`
+      `http://localhost:8000/favorites/${obj.id}`
     );
     setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
   };
