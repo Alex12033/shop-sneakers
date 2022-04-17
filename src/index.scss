@@ -187,6 +187,55 @@ header {
             margin: 0px 0px 3px 20px;
         }
     }
+
+    .emptyFavorites {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        span {
+            opacity: 0.9;
+        }
+
+        .greenButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 55px;
+            background: #9dd558;
+            border-radius: 18px;
+            border: 0;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 245px;
+            margin-top: 20px;
+            transition: background 0.4s ease-in-out;
+         
+        
+            &:hover {
+                background: lighten(#acf355, 5%); 
+            }
+
+            &:active {
+                background: lighten(#507524, 5%); 
+            }
+
+            .arrow {
+                margin-right: 15px;
+                transition: 0.4s ease-in-out;
+            }
+        }
+
+        .greenButton:hover {
+            .arrow {
+                transform: rotate(-180deg);
+                transition: 0.4s ease-in-out;
+            }
+        }
+    }
 }
 
 

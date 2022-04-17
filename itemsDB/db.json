@@ -61,6 +61,28 @@
       "src": "img/sneakers/10.jpg"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "name": "Man Sneakers Blazer Mid",
+      "price": "129",
+      "src": "img/sneakers/1.jpg",
+      "checked": true,
+      "id": "1"
+    },
+    {
+      "name": "Man Sneakers Blazer Mid Nike",
+      "price": "340",
+      "src": "img/sneakers/2.jpg",
+      "checked": true,
+      "id": "2"
+    },
+    {
+      "name": "Man Airmax Mid",
+      "price": "457",
+      "src": "img/sneakers/3.jpg",
+      "checked": true,
+      "id": "3"
+    }
+  ],
   "favorites": []
 }
