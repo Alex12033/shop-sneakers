@@ -70,7 +70,7 @@ function Card({
             <b>{price}$</b>
             <div>
               <img
-                className="button"
+                className={checked ? "button" : "checked"}
                 onClick={onClickPlus}
                 src={checked ? "/img/plus.svg" : "/img/btn-checked.svg"}
                 alt="plus"

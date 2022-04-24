@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../components/Card.js";
+import AppContext from "../components/context.js";
 
-function Home({
-  searchValue,
-  setSearchValue,
-  onChangeSearchInput,
-  card,
-  onAddToCart,
-  onAddLike,
-  isLoading,
-}) {
+function Home({ onAddToCart, onAddLike, isLoading }) {
+  
+  const { card } = useContext(AppContext);
+  const { searchValue } = useContext(AppContext);
+  const { setSearchValue } = useContext(AppContext);
+  const { onChangeSearchInput } = useContext(AppContext);
+
   return (
     <div className="content">
       <div className="title-search">

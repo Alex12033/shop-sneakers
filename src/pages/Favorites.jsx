@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Card from "../components/Card";
-import EmptyFavorits from "../components/EmptyFavorits";
+import Notice from "../components/Notice";
+import AppContext from "../components/context";
 
-function Favorites({ searchValue, setSearchValue, onChangeSearchInput }) {
+function Favorites() {
   const [favorites, setFavorites] = useState([]);
+
+  const { searchValue } = useContext(AppContext);
+  const { setSearchValue } = useContext(AppContext);
+  const { onChangeSearchInput } = useContext(AppContext);
 
   useState(() => {
     axios.get("http://localhost:8000/favorites").then((res) => {
@@ -40,19 +45,27 @@ function Favorites({ searchValue, setSearchValue, onChangeSearchInput }) {
       </div>
       <div className="sneakers">
         {favorites.length === 0 ? (
-          <EmptyFavorits />
+          <Notice
+            img={"img/favorites-star-icon-png-0.png"}
+            title={"Your favorite empty"}
+            description={"Go back in shop and mark your favorite product"}
+          />
         ) : (
-          favorites.map((obj) => (
-            <Card
-              onRemoveFavorites={onRemoveFavorites}
-              heartFavorites={false}
-              id={obj.id}
-              name={obj.name}
-              price={obj.price}
-              key={obj.id}
-              src={obj.src}
-            />
-          ))
+          favorites
+            .filter((item) =>
+              item.name.toLowerCase().includes(searchValue.toLowerCase())
+            )
+            .map((obj) => (
+              <Card
+                onRemoveFavorites={onRemoveFavorites}
+                heartFavorites={false}
+                id={obj.id}
+                name={obj.name}
+                price={obj.price}
+                key={obj.id}
+                src={obj.src}
+              />
+            ))
         )}
       </div>
     </div>

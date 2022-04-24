@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import AppContext from "./context";
 
 function Header() {
+  const { sum } = useContext(AppContext);
   return (
     <header>
       <Link to="/">
@@ -18,12 +20,12 @@ function Header() {
         <Link to="/drawer">
           <li>
             <img width="18" height="18" src="/img/cart.svg" alt="logo" />
-            <span>456</span>
+            <span>{sum} $</span>
           </li>
         </Link>
 
         <Link to="/favorites">
-          <li className="heartBookmark">
+          <li>
             <img width="18" height="18" src="/img/heart.svg" alt="heart" />
           </li>
         </Link>

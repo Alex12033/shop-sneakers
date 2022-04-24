@@ -1,33 +1,36 @@
 import axios from "axios";
+
 import { useEffect, useState } from "react";
+
 import Drawer from "./components/Drawer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import { Route, Routes } from "react-router-dom";
 import Favorites from "./pages/Favorites";
+
+import AppContext from "./components/context";
+
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [card, setCard] = useState([]);
 
-  // eslint-disable-next-line no-unused-vars
-  const [cartItems, setCartItems] = useState([]);
-
   const [searchValue, setSearchValue] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
+  const [cartItems, setCartItems] = useState([]);
+  const [sum, setSum] = useState("d");
 
-  //console.log(window.location.href);
+  const getTotalSum = (sum) => {
+    setSum(sum);
+  };
 
   useEffect(() => {
     async function fetchData() {
-      const data = await axios.get(
-        "http://localhost:8000/items"
-      );
-
+      const data = await axios.get("http://localhost:8000/items");
       setCard(data.data);
     }
     fetchData();
-    
+
     setTimeout(() => {
       //it wrong! LATER i fix it!
       setIsLoading(false);
@@ -38,15 +41,12 @@ function App() {
   //   return [...new Map(data.map((item) => [key(item), item])).values()];
   // };
 
-  const onAddToCart = (obj) => {
+  const onAddToCart = async (obj) => {
     if (obj.checked) {
-      axios.post("http://localhost:8000/cart", obj);
-      setCartItems((prev) => [...prev, obj]);
+      await axios.post("http://localhost:8000/cart", obj);
     } else {
-      //if obj.unchecked = false delete from cart on obj.id
-      axios.delete(
-        `http://localhost:8000/cart/${obj.id}`
-      );
+      //if obj.checked = false delete from cart with clicked obj.id
+      await axios.delete(`http://localhost:8000/cart/${obj.id}`);
     }
   };
 
@@ -60,38 +60,37 @@ function App() {
 
   return (
     <div className="wrapper clear">
-      <Header />
-      <Routes>
-        <Route path="/drawer" element={<Drawer />} exact />
+      <AppContext.Provider
+        value={{
+          setCartItems,
+          cartItems,
+          sum,
+          getTotalSum,
+          card,
+          searchValue,
+          setSearchValue,
+          onChangeSearchInput,
+        }}
+      >
+        <Header />
+        <Routes>
+          <Route path="/drawer" element={<Drawer />} exact />
 
-        <Route
-          path="/favorites"
-          element={
-            <Favorites
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              onChangeSearchInput={onChangeSearchInput}
-            />
-          }
-          exact
-        />
+          <Route path="/favorites" element={<Favorites />} exact />
 
-        <Route
-          path="/"
-          element={
-            <Home
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              onChangeSearchInput={onChangeSearchInput}
-              card={card}
-              onAddToCart={onAddToCart}
-              onAddLike={onAddLike}
-              isLoading={isLoading}
-            />
-          }
-          exact
-        />
-      </Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                onAddToCart={onAddToCart}
+                onAddLike={onAddLike}
+                isLoading={isLoading}
+              />
+            }
+            exact
+          />
+        </Routes>
+      </AppContext.Provider>
     </div>
   );
 }

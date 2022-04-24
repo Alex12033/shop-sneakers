@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function EmptyCart({ onGoBack }) {
+const Notice = ({title, description, img}) => {
   return (
-    <div className="emptyCart">
-      <img className="cartImg" src="img/empty-cart.jpg" alt="empty cart" />
-      <h2>Empty cart</h2>
-      <p>Add at least one pair of shoes per order</p>
+    <div className="notice">
+      <img className="notice_img" src={img} alt="info img" />
+      <h2 className="title_notice">{title}</h2>
+      <p className="description_notice">{description}</p>
       <Link to="/">
         <button className="greenButton">
           <img className="arrow" src="/img/arrow.svg" alt="Arrow" />
@@ -15,6 +15,6 @@ function EmptyCart({ onGoBack }) {
       </Link>
     </div>
   );
-}
+};
 
-export default EmptyCart;
+export default Notice;
