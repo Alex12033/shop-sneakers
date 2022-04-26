@@ -16,7 +16,7 @@ function Home({ onAddToCart, onAddLike, isLoading }) {
           {searchValue ? `Search request: ${searchValue}` : "All Sneakers"}
         </h1>
         <div className="search-block">
-          <img src="/img/search.svg" alt="search" />
+          <img className="searchImage" src="/img/search.svg" alt="search" />
           {searchValue && (
             <img
               onClick={() => setSearchValue("")}
@@ -25,7 +25,7 @@ function Home({ onAddToCart, onAddLike, isLoading }) {
               alt="remove"
             />
           )}
-          <input
+          <input className="searchHome"
             onChange={onChangeSearchInput}
             value={searchValue}
             placeholder="Search..."

@@ -19,10 +19,10 @@ function Card({
     setChecked(!checked);
     if (checked) {
       //this if() need for not send same object when user click second time on plus
-      onPlus({ name, price, src, checked, id}); //send info for display card in cart drawer
-    }  else {
+      onPlus({ name, price, src, checked, id }); //send info for display card in cart drawer
+    } else {
       //if unchecked
-      onPlus({ name, price, src, checked, id }); 
+      onPlus({ name, price, src, checked, id });
     }
   }
 
@@ -39,8 +39,8 @@ function Card({
   return isLoading ? (
     <ContentLoader
       speed={0}
-      width={155}
-      height={265}
+      width={250}
+      height={270}
       viewBox="0 0 170 265"
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
@@ -54,13 +54,15 @@ function Card({
   ) : (
     <>
       <div className="card">
-        <div className="favorite">
-          <img
-            onClick={onLikeClick}
-            src={onFavorite ? "/img/unliked.svg" : "/img/liked.svg"}
-            alt="unliked"
-          />
-        </div>
+        {onLike && (
+          <div className="favorite">
+            <img
+              onClick={onLikeClick}
+              src={onFavorite ? "/img/unliked.svg" : "/img/liked.svg"}
+              alt="unliked"
+            />
+          </div>
+        )}
 
         <img width="133" height="122" src={src} alt="" />
         <h5>{name}</h5>
@@ -69,12 +71,14 @@ function Card({
             <span>Price:</span>
             <b>{price}$</b>
             <div>
-              <img
-                className={checked ? "button" : "checked"}
-                onClick={onClickPlus}
-                src={checked ? "/img/plus.svg" : "/img/btn-checked.svg"}
-                alt="plus"
-              />
+              {onPlus && (
+                <img
+                  className={checked ? "button" : "checked"}
+                  onClick={onClickPlus}
+                  src={checked ? "/img/plus.svg" : "/img/btn-checked.svg"}
+                  alt="plus"
+                />
+              )}
             </div>
           </div>
         </div>

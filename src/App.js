@@ -6,6 +6,7 @@ import Drawer from "./components/Drawer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
+import Orders from "./pages/Orders";
 
 import AppContext from "./components/context";
 
@@ -17,17 +18,17 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
-  const [cartItems, setCartItems] = useState([]);
-  const [sum, setSum] = useState("d");
 
-  const getTotalSum = (sum) => {
-    setSum(sum);
-  };
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await axios.get("http://localhost:8000/items");
-      setCard(data.data);
+      try {
+        const data = await axios.get("http://localhost:8000/items");
+        setCard(data.data);
+      } catch (error) {
+        alert("Error in query data");
+      }
     }
     fetchData();
 
@@ -37,21 +38,34 @@ function App() {
     }, 1000);
   }, []);
 
+  const getTotalSum = () => {
+    return cartItems.reduce((sum, obj) => +obj.price + sum, 0);
+  };
+
   // const removeDuplicate = (data, key) => {
   //   return [...new Map(data.map((item) => [key(item), item])).values()];
   // };
 
   const onAddToCart = async (obj) => {
-    if (obj.checked) {
-      await axios.post("http://localhost:8000/cart", obj);
-    } else {
-      //if obj.checked = false delete from cart with clicked obj.id
-      await axios.delete(`http://localhost:8000/cart/${obj.id}`);
+    try {
+      if (obj.checked) {
+        setCartItems((prev) => [...prev, obj]);
+        await axios.post("http://localhost:8000/cart", obj);
+      } else {
+        //if obj.checked = false delete from cart with clicked obj.id
+        await axios.delete(`http://localhost:8000/cart/${obj.id}`);
+      }
+    } catch (error) {
+      alert("Error in process post in cart");
     }
   };
 
   const onAddLike = (obj) => {
-    axios.post("http://localhost:8000/favorites", obj);
+    try {
+      axios.post("http://localhost:8000/favorites", obj);
+    } catch (error) {
+      alert("Error in process adding into favorites");
+    }
   };
 
   const onChangeSearchInput = (e) => {
@@ -64,7 +78,6 @@ function App() {
         value={{
           setCartItems,
           cartItems,
-          sum,
           getTotalSum,
           card,
           searchValue,
@@ -77,6 +90,8 @@ function App() {
           <Route path="/drawer" element={<Drawer />} exact />
 
           <Route path="/favorites" element={<Favorites />} exact />
+
+          <Route path="/orders" element={<Orders />} exact />
 
           <Route
             path="/"

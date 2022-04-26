@@ -1,21 +1,21 @@
 import React from "react";
 
 function TotalPriceBlock({ onOrder, totalSum }) {
-  //console.log(totalSum);
   return (
     <div className="items">
       <ul className="cartTotalBlock">
         <li>
           <span>Total:</span>
           <div></div>
-          45
+          {totalSum} $
         </li>
         <li>
           <span>Tax 5%:</span>
           <div></div>
-          <b>{totalSum} $</b>
+          <b>{Math.ceil((totalSum / 100) * 5)} $</b>
         </li>
       </ul>
+
       <button onClick={onOrder} className="buttonOrder">
         Check order
         <img className="arrow" src="/img/arrow.svg" alt="arrow" />

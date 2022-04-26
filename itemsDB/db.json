@@ -59,9 +59,24 @@
       "name": "Man Sneakers Blazer Mid",
       "price": "125",
       "src": "img/sneakers/10.jpg"
+    },
+    {
+      "id": "11",
+      "name": "Man Sneakers Blazer Mid",
+      "price": "1256",
+      "src": "img/sneakers/9.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Man Sneakers Blazer Mid",
+      "price": "125",
+      "src": "img/sneakers/10.jpg"
     }
   ],
   "cart": [],
-  "favorites": [],
-  "orders": []
+  "favorites": [
+  ],
+  "orders": [
+    
+  ]
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 
 import axios from "axios";
 
@@ -10,32 +10,28 @@ import AppContext from "./context";
 import { Link } from "react-router-dom";
 
 function Drawer() {
-  const [cartItems, setCartItems] = useState([]);
   const [isOrdered, setIsOsdered] = useState(false);
 
   const { getTotalSum } = useContext(AppContext);
-  useEffect(() => {
-    axios.get("http://localhost:8000/cart").then((res) => {
-      setCartItems(res.data);
-    });
-  }, []);
+  const { cartItems } = useContext(AppContext);
+  const { setCartItems } = useContext(AppContext);
 
-  const totalPrice = cartItems.reduce((sum, obj) => +obj.price + sum, 0);
-  getTotalSum(totalPrice)
-  
   const onOrder = async () => {
-    try {
-      await axios.post("http://localhost:8000/orders", cartItems);
+    await axios
+      .post("http://localhost:8000/orders", cartItems)
+      .catch((error) => console.log(error.toJSON()));
 
-      setCartItems([]);
-      setIsOsdered(true);
+    Promise.all(
+      cartItems.map(
+        async (obj) =>
+          await axios
+            .delete(`http://localhost:8000/cart/${obj.id}`)
+            .catch((error) => console.log(error.toJSON()))
+      )
+    );
 
-      cartItems.map((obj) =>
-        axios.delete(`http://localhost:8000/cart/${obj.id}`)
-      );
-    } catch {
-      alert("Wrong in proccess your order");
-    }
+    setCartItems([]);
+    setIsOsdered(true);
   };
 
   const filterItems = (items, id) => {
@@ -43,8 +39,12 @@ function Drawer() {
   };
 
   const onRemoveItemFromCart = (id) => {
-    axios.delete(`http://localhost:8000/cart/${id}`);
-    setCartItems((prev) => filterItems(prev, id));
+    try {
+      axios.delete(`http://localhost:8000/cart/${id}`);
+      setCartItems((prev) => filterItems(prev, id));
+    } catch (error) {
+      alert("Error delete item from cart");
+    }
   };
 
   return (
@@ -81,7 +81,7 @@ function Drawer() {
                 </div>
               ))}
             </div>
-            <TotalPriceBlock onOrder={onOrder} totalSum={totalPrice} />
+            <TotalPriceBlock onOrder={onOrder} totalSum={getTotalSum()} />
           </>
         ) : (
           <Notice
@@ -96,6 +96,7 @@ function Drawer() {
                 ? "Have nice day"
                 : "Add at least one pair of shoes per order"
             }
+            isOrder={isOrdered}
           />
         )}
       </div>

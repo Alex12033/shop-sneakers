@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AppContext from "./context";
 
 function Header() {
-  const { sum } = useContext(AppContext);
+  const { getTotalSum } = useContext(AppContext);
   return (
     <header>
       <Link to="/">
@@ -20,7 +20,7 @@ function Header() {
         <Link to="/drawer">
           <li>
             <img width="18" height="18" src="/img/cart.svg" alt="logo" />
-            <span>{sum} $</span>
+            <span>{getTotalSum()} $</span>
           </li>
         </Link>
 
@@ -29,9 +29,12 @@ function Header() {
             <img width="18" height="18" src="/img/heart.svg" alt="heart" />
           </li>
         </Link>
-        <li>
-          <img width="18" height="18" src="/img/user.svg" alt="user" />
-        </li>
+
+        <Link to="/orders">
+          <li>
+            <img width="18" height="18" src="/img/user.svg" alt="user" />
+          </li>
+        </Link>
       </ul>
     </header>
   );

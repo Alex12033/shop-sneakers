@@ -36,7 +36,7 @@ function Favorites() {
               alt="remove"
             />
           )}
-          <input
+          <input className="searchHome"
             onChange={onChangeSearchInput}
             value={searchValue}
             placeholder="Search..."
