@@ -59,6 +59,7 @@ function Favorites() {
               <Card
                 onRemoveFavorites={onRemoveFavorites}
                 heartFavorites={false}
+                onLike={true}
                 id={obj.id}
                 name={obj.name}
                 price={obj.price}

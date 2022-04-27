@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+for start app on locallhost for run both json server and this app add this in script in json.package"server": 
+" concurrently \"npm run json-server\" \"npm run start\" ", 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
