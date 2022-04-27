@@ -1,0 +1,82 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "name": "Man Sneakers Blazer Mid",
+      "price": "129",
+      "src": "img/sneakers/1.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Man Sneakers Blazer Mid Nike",
+      "price": "340",
+      "src": "img/sneakers/2.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Man Airmax Mid",
+      "price": "457",
+      "src": "img/sneakers/3.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Man Sneakers Seude",
+      "price": "1000",
+      "src": "img/sneakers/4.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Man Sneakers Puma X Alia",
+      "price": "100",
+      "src": "img/sneakers/5.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Man Blazer Mid",
+      "price": "1200",
+      "src": "img/sneakers/6.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Man Sneakers Blazer",
+      "price": "340",
+      "src": "img/sneakers/7.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Man Sneakers Blazer Mid",
+      "price": "457",
+      "src": "img/sneakers/8.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Man Sneakers Blazer Mid",
+      "price": "1256",
+      "src": "img/sneakers/9.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Man Sneakers Blazer Mid",
+      "price": "125",
+      "src": "img/sneakers/10.jpg"
+    },
+    {
+      "id": "11",
+      "name": "Man Sneakers Blazer Mid",
+      "price": "1256",
+      "src": "img/sneakers/9.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Man Sneakers Blazer Mid",
+      "price": "125",
+      "src": "img/sneakers/10.jpg"
+    }
+  ],
+  "cart": [],
+  "favorites": [
+  ],
+  "orders": [
+    
+  ]
+}
