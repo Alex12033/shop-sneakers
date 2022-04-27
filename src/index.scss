@@ -289,7 +289,6 @@ header {
   align-items: center;
 
   h1 {
-
     margin-bottom: 60px;
     width: 17em;
     font-size: 35px;
@@ -318,24 +317,59 @@ header {
       height: 39px;
       cursor: pointer;
     }
-  }
 
-  .searchHome {
-    border: 0;
-    margin: 8px 0 0 5px;
-    font-size: 16px;
+    .searchHome {
+      border: 0;
+      //margin: 8px 0 0 5px;
+      width: 100px;
+      font-size: 16px;
+    }
   }
 }
 
 @media only screen and (max-width: 670px) {
+  header {
+    .headerLeft {
+      h3 {
+        font-size: 15px;
+      }
+    }
+
+    .headerRight {
+      margin-left: 20px;
+      li {
+        height: 20px;
+        width: 45px;
+        transition: 0.3s ease-in-out;
+        opacity: 0.8;
+        margin-left: 1px;
+
+        &:active {
+          background: lighten(#53a269, 5%);
+        }
+      }
+
+      span {
+        font-size: 13px;
+        font-weight: 600;
+      }
+    }
+  }
+
   .title-search {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -35px;
+
+    .search-block {
+      margin-top: 40px;
+      width: 140px;
+    }
 
     h1 {
       //padding-bottom: 0px;
-      font-size: 25px;
+      font-size: 20px;
       margin-bottom: 10px;
     }
   }
@@ -343,9 +377,9 @@ header {
   .sneakers {
     .card {
       padding: 10px 20px 10px 20px;
-      width: 185px;
-      height: 250px;
-      border-radius: 10px;
+      width: 300px;
+      height: 270px;
+      border-radius: 30px;
     }
 
     .priceCard {
@@ -362,6 +396,11 @@ header {
         flex-direction: row;
       }
     }
+  }
+
+  .drawer {
+    font-size: 11px;
+    height: 70%;
   }
 }
 
