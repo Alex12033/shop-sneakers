@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await axios.get("http://localhost:8000/items");
+        const data = await axios.get("https://sneakers-course.herokuapp.com/api/items");
         setCard(data.data);
       } catch (error) {
         alert("Error in query data");
