@@ -11,7 +11,7 @@ function Header() {
           <img width="40" height="40" src="/img/logo.png" alt="logo" />
           <div className="headerInfo">
             <h3>React Sneakers</h3>
-            <p>Shop of best </p>
+            <p>best </p>
           </div>
         </div>
       </Link>
