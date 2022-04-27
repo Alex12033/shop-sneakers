@@ -18,14 +18,14 @@ function Drawer() {
 
   const onOrder = async () => {
     await axios
-      .post("http://localhost:8000/orders", cartItems)
+      .post("https://sneakers-course.herokuapp.com/api/orders", cartItems)
       .catch((error) => console.log(error.toJSON()));
 
     Promise.all(
       cartItems.map(
         async (obj) =>
           await axios
-            .delete(`http://localhost:8000/cart/${obj.id}`)
+            .delete(`https://sneakers-course.herokuapp.com/api/cart/${obj.id}`)
             .catch((error) => console.log(error.toJSON()))
       )
     );
@@ -40,7 +40,7 @@ function Drawer() {
 
   const onRemoveItemFromCart = (id) => {
     try {
-      axios.delete(`http://localhost:8000/cart/${id}`);
+      axios.delete(`https://sneakers-course.herokuapp.com/api/cart/${id}`);
       setCartItems((prev) => filterItems(prev, id));
     } catch (error) {
       alert("Error delete item from cart");

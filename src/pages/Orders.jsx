@@ -9,7 +9,7 @@ const Orders = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("http://localhost:8000/orders");
+      const { data } = await axios.get("https://sneakers-course.herokuapp.com/api/orders");
       setOrders(data.reduce((prev, obj) => [...prev, ...obj], []));
       setTimeout(() => {
         //it wrong! LATER i fix it!

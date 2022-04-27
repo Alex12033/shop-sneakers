@@ -12,13 +12,13 @@ function Favorites() {
   const { onChangeSearchInput } = useContext(AppContext);
 
   useState(() => {
-    axios.get("http://localhost:8000/favorites").then((res) => {
+    axios.get("https://sneakers-course.herokuapp.com/api/favorites").then((res) => {
       setFavorites(res.data);
     });
   }, []);
 
   const onRemoveFavorites = (obj) => {
-    axios.delete(`http://localhost:8000/favorites/${obj.id}`);
+    axios.delete(`https://sneakers-course.herokuapp.com/api/favorites/${obj.id}`);
     setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
   };
 

@@ -50,10 +50,10 @@ function App() {
     try {
       if (obj.checked) {
         setCartItems((prev) => [...prev, obj]);
-        await axios.post("http://localhost:8000/cart", obj);
+        await axios.post("https://sneakers-course.herokuapp.com/api/cart", obj);
       } else {
         //if obj.checked = false delete from cart with clicked obj.id
-        await axios.delete(`http://localhost:8000/cart/${obj.id}`);
+        await axios.delete(`https://sneakers-course.herokuapp.com/api/cart/${obj.id}`);
       }
     } catch (error) {
       alert("Error in process post in cart");
@@ -62,7 +62,7 @@ function App() {
 
   const onAddLike = (obj) => {
     try {
-      axios.post("http://localhost:8000/favorites", obj);
+      axios.post("https://sneakers-course.herokuapp.com/api/favorites", obj);
     } catch (error) {
       alert("Error in process adding into favorites");
     }
