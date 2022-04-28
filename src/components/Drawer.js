@@ -3,11 +3,15 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 
 import Notice from "./Notice";
-import TotalPriceBlock from "./TotalPriceBlock";
+import TotalCart from "./TotalCart";
 
 import AppContext from "./context";
 
 import { Link } from "react-router-dom";
+
+import style from "./Drawer.module.scss";
+
+
 
 function Drawer() {
   const [isOrdered, setIsOsdered] = useState(false);
@@ -49,31 +53,31 @@ function Drawer() {
 
   return (
     <>
-      <div className="overlay"></div>
-      <div className="drawer">
+      <div className={style.overlay}></div>
+      <div className={style.drawer}>
         <h2>
           Cart
           <Link to="/">
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
+            <img className={style.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
           </Link>
         </h2>
 
         {cartItems.length > 0 ? (
           <>
-            <div className="scroll">
+            <div className={style.scroll}>
               {cartItems.map((obj) => (
-                <div className="cartItem">
+                <div className={style.cartItem}>
                   <img width={70} height={70} src={obj.src} alt="Sneakers" />
-                  <div className="titlePrice">
+                  <div className={style.titlePrice}>
                     <p>{obj.name}</p>
                     <b>{obj.price}$</b>
                   </div>
-                  <div className="columnCartCloseCount">
+                  <div className={style.columnCartCloseCount}>
                     <img
                       onClick={function () {
                         onRemoveItemFromCart(obj.id);
                       }}
-                      className="removeBtn"
+                      className={style.removeBtn}
                       src="/img/btn-remove.svg"
                       alt="Remove"
                     />
@@ -81,7 +85,7 @@ function Drawer() {
                 </div>
               ))}
             </div>
-            <TotalPriceBlock onOrder={onOrder} totalSum={getTotalSum()} />
+            <TotalCart onOrder={onOrder} totalSum={getTotalSum()} />
           </>
         ) : (
           <Notice

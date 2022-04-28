@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
 
+import style from './Card.module.scss'
+
 function Card({
   id,
   name,
@@ -23,6 +25,7 @@ function Card({
     } else {
       //if unchecked
       onPlus({ name, price, src, checked, id });
+      console.log({ name, price, src, checked, id });
     }
   }
 
@@ -53,9 +56,9 @@ function Card({
     </ContentLoader>
   ) : (
     <>
-      <div className="card">
+      <div className={style.card}>
         {onLike && (
-          <div className="favorite">
+          <div className={style.favorite}>
             <img
               onClick={onLikeClick}
               src={onFavorite ? "/img/unliked.svg" : "/img/liked.svg"}
@@ -66,14 +69,14 @@ function Card({
 
         <img width="133" height="122" src={src} alt="" />
         <h5>{name}</h5>
-        <div className="cardBottom">
-          <div className="priceCard">
+        <div className={style.cardBottom}>
+          <div className={style.priceCard}>
             <span>Price:</span>
             <b>{price}$</b>
             <div>
               {onPlus && (
                 <img
-                  className={checked ? "button" : "checked"}
+                  className={checked ? `${style.button}` : `${style.checked}`}
                   onClick={onClickPlus}
                   src={checked ? "/img/plus.svg" : "/img/btn-checked.svg"}
                   alt="plus"

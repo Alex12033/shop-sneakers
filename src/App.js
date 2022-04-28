@@ -49,6 +49,7 @@ function App() {
   const onAddToCart = async (obj) => {
     try {
       if (obj.checked) {
+        console.log(obj.checked)
         setCartItems((prev) => [...prev, obj]);
         await axios.post("https://sneakers-course.herokuapp.com/api/cart", obj);
       } else {
