@@ -1,0 +1,60 @@
+.notice {
+  animation: smoothOpenBlock 1s forwards;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .title_notice {
+    margin-bottom: 5px;
+  }
+
+  .description_notice {
+    margin-bottom: 5px;
+  }
+
+  .notice_img {
+    margin: 0 auto;
+    width: 250px;
+    height: 220px;
+  }
+
+  .greenButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 245px;
+    height: 55px;
+    margin-top: 20px;
+    background: #9dd558;
+    border-radius: 18px;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+
+    .arrow {
+      margin-right: 20px;
+      transition: 0.4s ease-in-out;
+    }
+
+    &:hover {
+      background: lighten(#9dd558, 5%);
+
+      .arrow {
+        transform: rotate(-180deg);
+        transition: 0.4s ease-in-out;
+      }
+    }
+
+    &:active {
+      background: lighten(#73a437, 5%);
+    }
+  }
+
+  p {
+    opacity: 0.7;
+  }
+}

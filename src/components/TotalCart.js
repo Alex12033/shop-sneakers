@@ -18,9 +18,9 @@ function TotalCart({ onOrder, totalSum }) {
         </li>
       </ul>
 
-      <button onClick={onOrder} className={style.buttonOrder}>
+      <button className={style.buttonOrder} onClick={onOrder} >
         Check order
-        <img className="arrow" src="/img/arrow.svg" alt="arrow" />
+        <img className={style.arrow} src="/img/arrow.svg" alt="arrow" />
       </button>
     </div>
   );

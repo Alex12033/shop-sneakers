@@ -13,7 +13,7 @@
 .drawer {
   animation: animDrawer 1s forwards;
   position: absolute;
-  width: 26em;
+  width: 25em;
   right: 0;
   top: 0;
   height: 100%;
@@ -34,7 +34,7 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     overflow-x: hidden;
-    height: 600px;
+    height: 500px;
   }
 
   .cartItem {
@@ -56,20 +56,20 @@
     }
   }
 
-  .cartTotalBlock {
-    li {
-      display: flex;
-      align-items: flex-end;
-      margin-bottom: 20px;
-    }
+  // .cartTotalBlock {
+  //   li {
+  //     display: flex;
+  //     align-items: flex-end;
+  //     margin-bottom: 20px;
+  //   }
 
-    div {
-      flex: 1;
-      height: 1px;
-      border-bottom: 1px dashed #dfdfdf;
-      position: relative;
-      top: -4px;
-      margin: 0 10px;
-    }
-  }
+  //   div {
+  //     flex: 1;
+  //     height: 1px;
+  //     border-bottom: 1px dashed #dfdfdf;
+  //     position: relative;
+  //     top: -4px;
+  //     margin: 0 10px;
+  //   }
+  // }
 }

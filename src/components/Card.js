@@ -59,7 +59,7 @@ function Card({
       <div className={style.card}>
         {onLike && (
           <div className={style.favorite}>
-            <img
+            <img className={style.plus}
               onClick={onLikeClick}
               src={onFavorite ? "/img/unliked.svg" : "/img/liked.svg"}
               alt="unliked"
