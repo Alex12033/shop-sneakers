@@ -47,14 +47,16 @@ function App() {
   // };
 
   const onAddToCart = async (obj) => {
+    console.log(obj.checked, obj.id);
     try {
       if (obj.checked) {
-        console.log(obj.checked)
         setCartItems((prev) => [...prev, obj]);
         await axios.post("https://sneakers-course.herokuapp.com/api/cart", obj);
       } else {
         //if obj.checked = false delete from cart with clicked obj.id
+        console.log('delete from cart')
         await axios.delete(`https://sneakers-course.herokuapp.com/api/cart/${obj.id}`);
+        setCartItems((prev) => prev.filter((item) => obj.id !== item.id));
       }
     } catch (error) {
       alert("Error in process post in cart");

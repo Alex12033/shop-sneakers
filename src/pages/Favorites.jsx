@@ -1,8 +1,13 @@
 import React, { useState, useContext } from "react";
+
 import axios from "axios";
+
 import Card from "../components/Card";
 import Notice from "../components/Notice";
+
 import AppContext from "../components/context";
+
+import style from "./Home.module.scss";
 
 function Favorites() {
   const [favorites, setFavorites] = useState([]);
@@ -18,25 +23,26 @@ function Favorites() {
   }, []);
 
   const onRemoveFavorites = (obj) => {
+    console.log(obj);
     axios.delete(`https://sneakers-course.herokuapp.com/api/favorites/${obj.id}`);
     setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
   };
 
   return (
     <div className="content">
-      <div className="title-search">
+      <div className={style.title_search}>
         <h1>"Favorites"</h1>
-        <div className="search-block">
-          <img src="/img/search.svg" alt="search" />
+        <div className={style.search_block}>
+          <img className={style.searchImage} src="/img/search.svg" alt="search" />
           {searchValue && (
             <img
               onClick={() => setSearchValue("")}
-              className="remove"
+              className={style.remove}
               src="/img/btn-remove.svg"
               alt="remove"
             />
           )}
-          <input className="searchHome"
+          <input className={style.searchHome}
             onChange={onChangeSearchInput}
             value={searchValue}
             placeholder="Search..."
