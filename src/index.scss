@@ -58,6 +58,16 @@ input {
   justify-content: center;
 }
 
+@media only screen and (min-width: 2000px) { 
+  .wrapper {
+    background: #ffffff;
+    border-radius: 30px;
+    max-width: 45%;
+    margin: 6rem auto;
+    padding: 80px;
+  }
+}
+
 @media only screen and (max-width: 670px) {
   header {
     .headerLeft {
