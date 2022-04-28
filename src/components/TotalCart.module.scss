@@ -1,0 +1,41 @@
+.items {
+  display: flex;
+  flex-direction: column;
+  //position: relative;
+
+  .greenButton {
+    &:hover {
+      img {
+        transform: translateX(5px);
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 10px;
+      top: 20px;
+      transition: transform 0.15s ease-in-out;
+    }
+
+    li {
+      display: flex;
+    }
+  }
+}
+
+.cartTotalBlock {
+  li {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+  }
+
+  div {
+    flex: 1;
+    height: 1px;
+    border-bottom: 1px dashed #dfdfdf;
+    position: relative;
+    top: -4px;
+    margin: 0 10px;
+  }
+}
