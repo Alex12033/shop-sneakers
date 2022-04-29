@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
 
-  h1 {
+  .title {
     margin-bottom: 60px;
     width: 17em;
     font-size: 35px;
@@ -39,5 +39,22 @@
       width: 130px;
       font-size: 16px;
     }
+  }
+  
+  @media all and (max-width: 670px) {
+    .title {
+      padding-bottom: 45px;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@keyframes smoothOpenBlock {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

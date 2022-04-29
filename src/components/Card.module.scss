@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #f2f2f2;
+  border: 3px solid #f2f2f2;
   padding: 30px;
   width: 210px;
   border-radius: 40px;
@@ -96,6 +96,34 @@
     &:active {
       transform: rotate(180deg);
       background-color: rgb(216, 231, 217);
+    }
+  }
+}
+
+@media all and (max-width: 570px) {
+  .card {
+    padding: 10px 20px 10px 20px;
+    width: 300px;
+    height: 280px;
+    border-radius: 30px;
+    
+    .favorite {
+    margin-right: 210px;
+  }
+  }
+
+  .priceCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    b {
+      margin-left: 10px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
     }
   }
 }

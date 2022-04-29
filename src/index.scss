@@ -51,98 +51,18 @@ input {
   padding: 40px 0px 40px 0px;
 }
 
+@media all and (min-width: 2080px) {
+  .wrapper {
+    width: 1000px;
+    height: 1300px;
+  }
+}
+
 .sneakers {
   animation: smoothOpenBlock 0.4s forwards;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-@media only screen and (min-width: 5100px) { 
-  .wrapper {
-    background: #ffffff;
-    border-radius: 30px;
-    max-width: 25%;
-    //margin: 3rem auto;
-    padding: 70px;
-  }
-}
-
-@media only screen and (max-width: 670px) {
-  header {
-    .headerLeft {
-      h3 {
-        font-size: 15px;
-      }
-    }
-
-    .headerRight {
-      margin-left: 20px;
-      li {
-        height: 30px;
-        width: 50px;
-        transition: 0.3s ease-in-out;
-        opacity: 0.8;
-        margin-left: 1px;
-
-        &:active {
-          background: lighten(#53a269, 5%);
-        }
-      }
-
-      span {
-        font-size: 13px;
-        font-weight: 600;
-      }
-    }
-  }
-
-  .title-search {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: -35px;
-
-    .search-block {
-      margin-top: 40px;
-      width: 140px;
-    }
-
-    h1 {
-      //padding-bottom: 0px;
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-  }
-
-  .sneakers {
-    .card {
-      padding: 10px 20px 10px 20px;
-      width: 300px;
-      height: 270px;
-      border-radius: 30px;
-    }
-
-    .priceCard {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      b {
-        margin-left: 2px;
-      }
-
-      div {
-        display: flex;
-        flex-direction: row;
-      }
-    }
-  }
-
-  .drawer {
-    font-size: 11px;
-    height: 70%;
-  }
 }
 
 @keyframes smoothOpenBlock {
@@ -154,11 +74,3 @@ input {
   }
 }
 
-@keyframes animDrawer {
-  0% {
-    transform: translateX(150%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}

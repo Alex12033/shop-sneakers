@@ -16,7 +16,7 @@ function Home({ onAddToCart, onAddLike, isLoading }) {
   return (
     <div className="content">
       <div className={style.title_search}>
-        <h1>
+        <h1 className={style.title}>
           {searchValue ? `Search request: ${searchValue}` : "All Sneakers"}
         </h1>
         <div className={style.search_block}>

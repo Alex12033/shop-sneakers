@@ -31,7 +31,7 @@ function Favorites() {
   return (
     <div className="content">
       <div className={style.title_search}>
-        <h1>"Favorites"</h1>
+        <h1 className={style.title}>"Favorites"</h1>
         <div className={style.search_block}>
           <img className={style.searchImage} src="/img/search.svg" alt="search" />
           {searchValue && (

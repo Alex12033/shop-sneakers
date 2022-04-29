@@ -15,15 +15,12 @@
 
     h3 {
       margin: 0 auto;
+      text-transform: uppercase;
     }
 
     p {
       margin: 0 auto;
       opacity: 0.33;
-    }
-
-    h3 {
-      text-transform: uppercase;
     }
   }
 
@@ -56,6 +53,32 @@
     span {
       font-size: 13px;
       font-weight: 600;
+    }
+  }
+
+  @media only screen and (max-width: 670px) {
+    h3 {
+      font-size: 10px;
+    }
+
+    .headerRight {
+      margin-left: 15px;
+      .menu {
+        height: 30px;
+        width: 50px;
+        transition: 0.3s ease-in-out;
+        opacity: 0.8;
+        margin-left: 2px;
+
+        &:active {
+          background: lighten(#53a269, 5%);
+        }
+      }
+
+      .price {
+        font-size: 9px;
+        font-weight: 800;
+      }
     }
   }
 }

@@ -34,7 +34,7 @@ const Orders = () => {
     <div className="content">
       <div className="title-search">
         <div className={style.title_search}>
-          <h1>
+          <h1 className={style.title}>
             {searchValue ? `Search request: ${searchValue}` : "Orders"}
           </h1>
           <div className={style.search_block}>

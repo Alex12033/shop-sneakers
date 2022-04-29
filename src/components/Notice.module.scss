@@ -8,10 +8,11 @@
 
   .title_notice {
     margin-bottom: 5px;
+    text-align: center;
   }
 
   .description_notice {
-    margin-bottom: 5px;
+    text-align: center;
   }
 
   .notice_img {
@@ -56,5 +57,14 @@
 
   p {
     opacity: 0.7;
+  }
+}
+
+@keyframes smoothOpenBlock {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

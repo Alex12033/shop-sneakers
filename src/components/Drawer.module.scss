@@ -56,20 +56,64 @@
     }
   }
 
-  // .cartTotalBlock {
-  //   li {
-  //     display: flex;
-  //     align-items: flex-end;
-  //     margin-bottom: 20px;
-  //   }
+  .cartTotalBlock {
+    li {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
 
-  //   div {
-  //     flex: 1;
-  //     height: 1px;
-  //     border-bottom: 1px dashed #dfdfdf;
-  //     position: relative;
-  //     top: -4px;
-  //     margin: 0 10px;
-  //   }
-  // }
+    div {
+      flex: 1;
+      height: 1px;
+      border-bottom: 1px dashed #dfdfdf;
+      position: relative;
+      top: -4px;
+      margin: 0 10px;
+    }
+  }
+}
+
+@media all and (min-width: 2080px) {
+  .drawer {
+    animation: animDrawerLargeDisplay 2s ease-in-out;
+    width: 1000px;
+    height: 1300px;
+    right: 40%;
+    //transition: 2s ease-in-out;
+
+    .scroll {
+      margin: 0 auto;
+      width: 800px;
+    }
+  }
+
+  @keyframes animDrawerLargeDisplay {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes animDrawer {
+  0% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothOpenBlock {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

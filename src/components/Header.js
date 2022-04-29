@@ -22,20 +22,20 @@ function Header() {
 
       <ul className={style.headerRight}>
         <Link to="/drawer">
-          <li>
+          <li className={style.menu}>
             <img className={style.img} width="18" height="18" src="/img/cart.svg" alt="logo" />
-            <span>{getTotalSum()} $</span>
+            <span className={style.price}>{getTotalSum()} $</span>
           </li>
         </Link>
 
         <Link to="/favorites">
-          <li>
+          <li className={style.menu}>
             <img width="18" height="18" src="/img/heart.svg" alt="heart" />
           </li>
         </Link>
 
         <Link to="/orders">
-          <li>
+          <li className={style.menu}>
             <img width="18" height="18" src="/img/user.svg" alt="user" />
           </li>
         </Link>
