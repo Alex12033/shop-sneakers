@@ -12,6 +12,9 @@ import AppContext from "./components/context";
 
 import { Route, Routes } from "react-router-dom";
 
+import { LoginBtn } from "./Auth/LoginBtn";
+import { LoginForm } from "./Auth/LoginForm";
+
 function App() {
   const [card, setCard] = useState([]);
 
@@ -24,7 +27,9 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await axios.get("https://sneakers-course.herokuapp.com/items");
+        const data = await axios.get(
+          "https://sneakers-course.herokuapp.com/items"
+        );
         setCard(data.data);
       } catch (error) {
         alert("Error in query data");
@@ -54,8 +59,10 @@ function App() {
         await axios.post("https://sneakers-course.herokuapp.com/api/cart", obj);
       } else {
         //if obj.checked = false delete from cart with clicked obj.id
-        console.log('delete from cart')
-        await axios.delete(`https://sneakers-course.herokuapp.com/api/cart/${obj.id}`);
+        console.log("delete from cart");
+        await axios.delete(
+          `https://sneakers-course.herokuapp.com/api/cart/${obj.id}`
+        );
         setCartItems((prev) => prev.filter((item) => obj.id !== item.id));
       }
     } catch (error) {
@@ -88,8 +95,13 @@ function App() {
           onChangeSearchInput,
         }}
       >
-        <Header />
+        <Header>
+          <LoginBtn />
+        </Header>
+        
         <Routes>
+          <Route path="/LoginForm" element={<LoginForm />} exact />
+          
           <Route path="/drawer" element={<Drawer />} exact />
 
           <Route path="/favorites" element={<Favorites />} exact />

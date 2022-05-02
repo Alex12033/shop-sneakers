@@ -1,0 +1,69 @@
+.loginForm {
+  display: flex;
+  //justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(1, 10, 10, 0.65);
+  border-radius: 10px;
+  height: 400px;
+  width: 300px;
+  margin-top: 2%;
+
+  .titleForm {
+    color: rgb(243, 243, 239);
+    font-weight: 500;
+  }
+
+  .dividerForm {
+    height: 1px;
+    width: 100%;
+    background-color: rgb(213, 203, 203);
+  }
+
+  .formInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 22%;
+    height: 100px;
+
+    .input {
+      color: aliceblue;
+      padding: 9px 13px;
+      border: 0;
+      border-bottom: 1px solid #000;
+      background-color: rgba(0, 0, 0, 0);
+      outline: 0;
+
+      &::placeholder {
+          color:rgb(213, 203, 203);
+      }
+    }
+  }
+
+  .loginBtn {
+    border: none;
+    border-radius: 40px;
+    height: 30px;
+    margin-top: 55px;
+    width: 210px;
+    transition: 0.5s;
+    background-color: #2691d9;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+      background-color: #079afc;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+@media all and (max-width: 670px) {
+  .loginForm {
+    margin-top: 10%;
+  }
+}

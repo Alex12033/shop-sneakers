@@ -1,0 +1,27 @@
+.loginBtn {
+  background-color: #e88b00;
+  border-radius: 40px;
+  padding: 10px 30px;
+  border: none;
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    background-color: lighten($color: #f1ac43, $amount: 0);
+  }
+
+  &:active {
+    background-color: lighten($color: #a4742d, $amount: 0);
+  }
+
+  .textBtn {
+    font-size: medium;
+    font-weight: 200;
+    color: aliceblue;
+  }
+}
+
+@media all and (max-width: 670px) {
+  .loginBtn {
+    padding: 5px 13px;
+  }
+}

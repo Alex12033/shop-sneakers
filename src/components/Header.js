@@ -6,7 +6,7 @@ import AppContext from "./context";
 
 import style from "./Header.module.scss";
 
-function Header() {
+function Header({children}) {
   const { getTotalSum } = useContext(AppContext);
   return (
     <header className={style.header}>
@@ -20,7 +20,7 @@ function Header() {
         </div>
       </Link>
 
-      <ul className={style.headerRight}>
+      {true ? children : <ul className={style.headerRight}>
         <Link to="/drawer">
           <li className={style.menu}>
             <img className={style.img} width="18" height="18" src="/img/cart.svg" alt="logo" />
@@ -39,7 +39,7 @@ function Header() {
             <img width="18" height="18" src="/img/user.svg" alt="user" />
           </li>
         </Link>
-      </ul>
+      </ul>}
     </header>
   );
 }
