@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import styles from "./LoginForm.module.scss";
 
 import axios from "axios";
-//import { Link } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 export const SignIn = () => {
   const [login, setLogin] = useState("");
@@ -21,9 +22,6 @@ export const SignIn = () => {
       alert("Fill in all the fields");
     } else {
       await axios.post("https://sneakers-course.herokuapp.com/api/users", auth);
-      setTimeout(() => {
-        window.location.href = "/LoginForm";
-      }, 2000);
       console.log("sign in work");
     }
     setLogin("");
@@ -59,9 +57,11 @@ export const SignIn = () => {
           ></input>
         </form>
 
-        <button className={styles.loginBtn} onClick={signIn}>
-          Sign In
-        </button>
+        <Link to="/Login">
+          <button className={styles.loginBtn} onClick={signIn}>
+            Sign In
+          </button>
+        </Link>
       </div>
     </div>
   );
