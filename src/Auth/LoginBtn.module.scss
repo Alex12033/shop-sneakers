@@ -1,9 +1,10 @@
 .loginBtn {
   background-color: #e88b00;
-  border-radius: 40px;
-  padding: 10px 30px;
+  border-radius: 10px;
+  padding: 2px 20px;
   border: none;
   transition: 0.5s ease-in-out;
+  margin-left: 3px;
 
   &:hover {
     background-color: lighten($color: #f1ac43, $amount: 0);

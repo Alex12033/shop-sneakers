@@ -14,6 +14,8 @@ import { Route, Routes } from "react-router-dom";
 
 import { LoginBtn } from "./Auth/LoginBtn";
 import { LoginForm } from "./Auth/LoginForm";
+import { SignIn } from "./Auth/SignIn";
+//import { Successfully } from "./Auth/Successfully";
 
 function App() {
   const [card, setCard] = useState([]);
@@ -23,6 +25,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [cartItems, setCartItems] = useState([]);
+
+  const [log, setLog] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -41,6 +45,8 @@ function App() {
       //it wrong! LATER i fix it!
       setIsLoading(false);
     }, 1000);
+
+    // setLog(false);
   }, []);
 
   const getTotalSum = () => {
@@ -52,7 +58,6 @@ function App() {
   // };
 
   const onAddToCart = async (obj) => {
-    console.log(obj.checked, obj.id);
     try {
       if (obj.checked) {
         setCartItems((prev) => [...prev, obj]);
@@ -93,15 +98,25 @@ function App() {
           searchValue,
           setSearchValue,
           onChangeSearchInput,
+          setLog,
+          log,
         }}
       >
-        <Header>
-          <LoginBtn />
+        <Header checkUserLogin={log}>
+          <LoginBtn checkUserLogin={log} />
         </Header>
-        
+
         <Routes>
-          <Route path="/LoginForm" element={<LoginForm />} exact />
-          
+          <Route
+            path="/LoginForm"
+            element={<LoginForm checkUserLogin={(e) => setLog(e)} />}
+            exact
+          />
+
+          {/* <Route path="/Successfull" element={<Successfully />} exact /> */}
+
+          <Route path="/SignIn" element={<SignIn />} exact />
+
           <Route path="/drawer" element={<Drawer />} exact />
 
           <Route path="/favorites" element={<Favorites />} exact />
@@ -112,6 +127,7 @@ function App() {
             path="/"
             element={
               <Home
+                isLogged={log}
                 onAddToCart={onAddToCart}
                 onAddLike={onAddLike}
                 isLoading={isLoading}

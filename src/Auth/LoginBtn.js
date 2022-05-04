@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
 
 import styles from "./LoginBtn.module.scss";
 
-export const LoginBtn = () => {
+import AppContext from "../components/context";
+
+export const LoginBtn = ({ checkUserLogin }) => {
+  const { setLog } = useContext(AppContext);
+  console.log(checkUserLogin);
+
+  const logOut = () => {
+    setLog(false);
+  };
+
   return (
-    <Link to="/LoginForm">
-      <button className={styles.loginBtn}><span className={styles.textBtn}>LoginBtn</span></button>
+    <Link to={"/LoginForm"}>
+      <li>
+        <button onClick={logOut} className={styles.loginBtn}>
+          <span className={styles.textBtn}>
+            {checkUserLogin ? "Log Out" : "Log In"}
+          </span>
+        </button>
+      </li>
     </Link>
   );
 };

@@ -26,17 +26,19 @@
     justify-content: space-around;
     margin-top: 22%;
     height: 100px;
+    margin-bottom: 55px;
 
     .input {
       color: aliceblue;
       padding: 9px 13px;
+      margin-top: 10px;
       border: 0;
       border-bottom: 1px solid #000;
       background-color: rgba(0, 0, 0, 0);
       outline: 0;
 
       &::placeholder {
-          color:rgb(213, 203, 203);
+        color: rgb(213, 203, 203);
       }
     }
   }
@@ -45,7 +47,7 @@
     border: none;
     border-radius: 40px;
     height: 30px;
-    margin-top: 55px;
+    //margin-top: 55px;
     width: 210px;
     transition: 0.5s;
     background-color: #2691d9;
@@ -59,6 +61,66 @@
     &:active {
       opacity: 0.7;
     }
+  }
+
+  .sign {
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgb(243, 243, 239);
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+      //background-color: #079afc;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  .alerts {
+    animation: alerts 1s ease-in-out; 
+    position: absolute;
+    z-index: 1;
+    margin-top: 32%;
+    color:rgb(243, 243, 239);
+    transition: 1s ease-in-out;
+    padding: 10px 10px;
+    background-color:rgba(1, 10, 10, 0.65);
+    font-size: 10px;
+    border-radius: 5px;
+    transition: 1s ease-in-out;
+  }
+
+  .lighting {
+    animation: lighting 1s ease-in-out;
+	  animation-iteration-count: 4;
+  }
+}
+
+@keyframes alerts {
+  0% {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lighting {
+  0% {
+    opacity: 0.1;
+    color: rgb(245, 238, 238);
+  }
+  100% {
+    color: rgb(253, 5, 5);
+    opacity: 1;
   }
 }
 

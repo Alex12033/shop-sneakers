@@ -6,8 +6,7 @@ import AppContext from "../components/context.js";
 
 import style from "./Home.module.scss";
 
-function Home({ onAddToCart, onAddLike, isLoading }) {
-  
+function Home({ onAddToCart, onAddLike, isLoading, isLogged }) {
   const { card } = useContext(AppContext);
   const { searchValue } = useContext(AppContext);
   const { setSearchValue } = useContext(AppContext);
@@ -15,12 +14,17 @@ function Home({ onAddToCart, onAddLike, isLoading }) {
 
   return (
     <div className="content">
+      {isLogged }
       <div className={style.title_search}>
         <h1 className={style.title}>
           {searchValue ? `Search request: ${searchValue}` : "All Sneakers"}
         </h1>
         <div className={style.search_block}>
-          <img className={style.searchImage} src="/img/search.svg" alt="search" />
+          <img
+            className={style.searchImage}
+            src="/img/search.svg"
+            alt="search"
+          />
           {searchValue && (
             <img
               onClick={() => setSearchValue("")}
@@ -29,7 +33,8 @@ function Home({ onAddToCart, onAddLike, isLoading }) {
               alt="remove"
             />
           )}
-          <input className={style.searchHome}
+          <input
+            className={style.searchHome}
             onChange={onChangeSearchInput}
             value={searchValue}
             placeholder="Search..."
@@ -43,6 +48,7 @@ function Home({ onAddToCart, onAddLike, isLoading }) {
           )
           .map((obj) => (
             <Card
+              isLogged={isLogged}
               heartFavorites={true}
               id={obj.id}
               name={obj.name}

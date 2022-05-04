@@ -10,6 +10,7 @@ function Card({
   src,
   onPlus,
   onLike,
+  isLogged,
   heartFavorites, //into heartFavorites true or false
   onRemoveFavorites,
   isLoading,
@@ -74,8 +75,8 @@ function Card({
             <span>Price:</span>
             <b>{price}$</b>
             <div>
-              {onPlus && (
-                <img
+              {(isLogged || onPlus) && isLogged && (
+                 <img
                   className={checked ? `${style.button}` : `${style.checked}`}
                   onClick={onClickPlus}
                   src={checked ? "/img/plus.svg" : "/img/btn-checked.svg"}

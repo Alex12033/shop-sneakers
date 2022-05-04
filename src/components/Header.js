@@ -6,7 +6,7 @@ import AppContext from "./context";
 
 import style from "./Header.module.scss";
 
-function Header({children}) {
+function Header({ children, checkUserLogin }) {
   const { getTotalSum } = useContext(AppContext);
   return (
     <header className={style.header}>
@@ -20,26 +20,38 @@ function Header({children}) {
         </div>
       </Link>
 
-      {true ? children : <ul className={style.headerRight}>
-        <Link to="/drawer">
-          <li className={style.menu}>
-            <img className={style.img} width="18" height="18" src="/img/cart.svg" alt="logo" />
-            <span className={style.price}>{getTotalSum()} $</span>
-          </li>
-        </Link>
+      {checkUserLogin ? (
+        <ul className={style.headerRight}>
+          <Link to="/drawer">
+            <li className={style.menu}>
+              <img
+                className={style.img}
+                width="18"
+                height="18"
+                src="/img/cart.svg"
+                alt="logo"
+              />
+              <span className={style.price}>{getTotalSum()} $</span>
+            </li>
+          </Link>
 
-        <Link to="/favorites">
-          <li className={style.menu}>
-            <img width="18" height="18" src="/img/heart.svg" alt="heart" />
-          </li>
-        </Link>
+          <Link to="/favorites">
+            <li className={style.menu}>
+              <img width="18" height="18" src="/img/heart.svg" alt="heart" />
+            </li>
+          </Link>
 
-        <Link to="/orders">
-          <li className={style.menu}>
-            <img width="18" height="18" src="/img/user.svg" alt="user" />
-          </li>
-        </Link>
-      </ul>}
+          <Link to="/orders">
+            <li className={style.menu}>
+              <img width="18" height="18" src="/img/user.svg" alt="user" />
+            </li>
+          </Link>
+
+          {children}
+        </ul>
+      ) : (
+        children
+      )}
     </header>
   );
 }
