@@ -57,7 +57,7 @@ export const SignIn = () => {
           ></input>
         </form>
 
-        <Link to="/Login">
+        <Link to="/LoginForm">
           <button className={styles.loginBtn} onClick={signIn}>
             Sign In
           </button>
