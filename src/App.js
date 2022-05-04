@@ -26,7 +26,7 @@ function App() {
 
   const [cartItems, setCartItems] = useState([]);
 
-  const [log, setLog] = useState(false);
+  const [log, setLog] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -98,12 +98,10 @@ function App() {
           searchValue,
           setSearchValue,
           onChangeSearchInput,
-          setLog,
-          log,
         }}
       >
         <Header checkUserLogin={log}>
-          <LoginBtn checkUserLogin={log} />
+          <LoginBtn checkUserLogin={log} setLog={setLog}/>
         </Header>
 
         <Routes>

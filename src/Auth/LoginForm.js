@@ -16,9 +16,8 @@ export const LoginForm = ({ checkUserLogin }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [users, setUsers] = useState([]);
+  
   const [nameUser, setNameUser] = useState("");
-
-  checkUserLogin(isLogged);
 
   useEffect(() => {
     (async () => {
@@ -28,8 +27,9 @@ export const LoginForm = ({ checkUserLogin }) => {
       setUsers(data);
     })();
   }, []);
-
   console.log(users);
+
+  checkUserLogin(isLogged);
 
   const isLoggedUser = async () => {
     const findUser = users.find(
@@ -50,6 +50,8 @@ export const LoginForm = ({ checkUserLogin }) => {
     setLogin("");
     setPassword("");
   };
+
+  console.log(isLogged, users);
 
   return isLogged ? (
     <Successfully nameUser={nameUser} />

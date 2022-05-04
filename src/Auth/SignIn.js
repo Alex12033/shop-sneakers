@@ -22,7 +22,6 @@ export const SignIn = () => {
       alert("Fill in all the fields");
     } else {
       await axios.post("https://sneakers-course.herokuapp.com/api/users", auth);
-      console.log("sign in work");
     }
     setLogin("");
     setPassword("");

@@ -1,14 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { Link } from "react-router-dom";
 
 import styles from "./LoginBtn.module.scss";
 
-import AppContext from "../components/context";
-
-export const LoginBtn = ({ checkUserLogin }) => {
-  const { setLog } = useContext(AppContext);
-  console.log(checkUserLogin);
+export const LoginBtn = ({ checkUserLogin, setLog }) => {
 
   const logOut = () => {
     setLog(false);
