@@ -29,7 +29,6 @@ export const LoginForm = ({ checkUserLogin }) => {
     })();
   }, []);
   console.log(users);
-
   checkUserLogin(isLogged);
 
   const isLoggedUser = async () => {
