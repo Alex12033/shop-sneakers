@@ -12,7 +12,6 @@ import AppContext from "./components/context";
 
 import { Route, Routes } from "react-router-dom";
 
-import { LoginBtn } from "./Auth/LoginBtn";
 import { LoginForm } from "./Auth/LoginForm";
 import { SignIn } from "./Auth/SignIn";
 //import { Successfully } from "./Auth/Successfully";
@@ -32,7 +31,7 @@ function App() {
     async function fetchData() {
       try {
         const data = await axios.get(
-          "https://sneakers-course.herokuapp.com/items"
+          "https://sneakers-course.web.app/api/items"
         );
         setCard(data.data);
       } catch (error) {
