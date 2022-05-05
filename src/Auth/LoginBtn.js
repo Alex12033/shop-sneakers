@@ -7,17 +7,15 @@ import styles from "./LoginBtn.module.scss";
 export const LoginBtn = ({ checkUserLogin, setLog }) => {
 
   const logOut = () => {
-    setLog(window.localStorage.setItem('isLogged', false))
+    setLog(window.localStorage.removeItem('isLogged'))
   };
-
-  console.log(checkUserLogin);
-
+  
   return (
     <Link to={"/LoginForm"}>
       <li>
         <button onClick={logOut} className={styles.loginBtn}>
           <span className={styles.textBtn}>
-            {checkUserLogin ? "Log Out" : "Log In"}
+            {checkUserLogin !== undefined ? "Log Out" : "Log In"}
           </span>
         </button>
       </li>

@@ -1,15 +1,21 @@
 import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
+import { LoginBtn } from "../Auth/LoginBtn";
 
 import AppContext from "./context";
 
 import style from "./Header.module.scss";
 
-function Header({ children, checkUserLogin }) {
+function Header({ children, checkUserLogin, setLog }) {
   const { getTotalSum } = useContext(AppContext);
   
+  console.log(checkUserLogin);
   
+  // if (window.performance) {
+  //   console.log('skjdbvksdb');
+  // }
+
   return (
     <header className={style.header}>
       <Link to="/">
@@ -49,10 +55,10 @@ function Header({ children, checkUserLogin }) {
             </li>
           </Link>
 
-          {children}
+          <LoginBtn checkUserLogin={checkUserLogin} setLog={setLog} />
         </ul>
       ) : (
-        children
+        <LoginBtn />
       )}
     </header>
   );

@@ -26,7 +26,7 @@ function App() {
 
   const [cartItems, setCartItems] = useState([]);
 
-  const [log, setLog] = useState(window.localStorage.getItem('isLogged'));
+  const [log, setLog] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -45,6 +45,7 @@ function App() {
       //it wrong! LATER i fix it!
       setIsLoading(false);
     }, 1000);
+    setLog(window.localStorage.getItem('isLogged'));
   }, []);
 
   const getTotalSum = () => {
@@ -101,9 +102,7 @@ function App() {
           setLog
         }}
       >
-        <Header checkUserLogin={log}>
-          <LoginBtn checkUserLogin={log} setLog={setLog}/>
-        </Header>
+        <Header checkUserLogin={log} setLog={setLog} />
 
         <Routes>
           <Route

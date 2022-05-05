@@ -4,65 +4,43 @@ import styles from "./LoginForm.module.scss";
 
 import axios from "axios";
 
-import { Link } from "react-router-dom";
+import Form from "./Form";
 
 export const SignIn = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [signInLog, setSignInLog] = useState("");
+  const [signInPwd, setSignInPwd] = useState("");
   const [email, setEmail] = useState("");
 
   const auth = {
-    login: login,
-    password: password,
+    login: signInLog,
+    password: signInPwd,
     email: email,
   };
 
   const signIn = async () => {
-    if (login === "" || password === "" || email === "") {
+    if (signInLog === "" || signInPwd === "" || email === "") {
       alert("Fill in all the fields");
     } else {
       await axios.post("https://sneakers-course.herokuapp.com/api/users", auth);
       window.location.href = "/LoginForm"; // need for renew component and get data in login form
     }
-    setLogin("");
-    setPassword("");
+    setSignInLog("");
+    setSignInPwd("");
     setEmail("");
   };
 
   return (
     <div className="sneakers">
-      <div className={styles.loginForm}>
-        <h3 className={styles.titleForm}>Sign Form</h3>
-        <div className={styles.dividerForm}></div>
-        <form className={styles.formInputs}>
-          <input
-            onChange={(e) => setLogin(e.target.value)}
-            placeholder="Username"
-            className={styles.input}
-            value={login}
-          ></input>
-
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className={styles.input}
-            value={password}
-          ></input>
-
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            className={styles.input}
-            value={email}
-          ></input>
-        </form>
-
-        
-          <button className={styles.loginBtn} onClick={signIn}>
-            Sign In
-          </button>
-        
-      </div>
+      <Form
+        choice={false}
+        setEmail={setEmail}
+        email={email}
+        setSignInLog={setSignInLog}
+        signInLog={signInLog}
+        setSignInPwd={setSignInPwd}
+        signInPwd={signInPwd}
+        signIn={signIn}
+      />
     </div>
   );
 };

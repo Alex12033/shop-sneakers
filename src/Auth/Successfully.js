@@ -3,13 +3,14 @@ import React, { useContext } from "react";
 import styles from "./Successfully.module.scss";
 
 import AppContext from "../components/context";
+
 import { Link } from "react-router-dom";
 
 export const Successfully = ({ nameUser }) => {
   const { setLog } = useContext(AppContext);
 
   const redirect = () => {
-    setLog(window.localStorage.getItem("isLogged", true)); //this redirect need for renew app cpmponent and renew local storage variable isLogged
+    setLog(window.localStorage.getItem("isLogged")); //this redirect need for renew app cpmponent and renew local storage variable isLogged
   };
 
   return (
