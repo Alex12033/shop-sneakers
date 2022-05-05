@@ -22,7 +22,7 @@ export const SignIn = () => {
       alert("Fill in all the fields");
     } else {
       await axios.post("https://sneakers-course.herokuapp.com/api/users", auth);
-      window.location.href = "https://sneakers-course.herokuapp.com/LoginForm"; // need for renew component and get data in login form
+      window.location.reload(); // need for renew component and get data in login form
     }
     setLogin("");
     setPassword("");
@@ -57,10 +57,11 @@ export const SignIn = () => {
           ></input>
         </form>
 
+        <Link to="/LoginForm">
           <button className={styles.loginBtn} onClick={signIn}>
             Sign In
           </button>
-        
+        </Link>
       </div>
     </div>
   );
