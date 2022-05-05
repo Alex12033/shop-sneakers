@@ -26,7 +26,7 @@ function App() {
 
   const [cartItems, setCartItems] = useState([]);
 
-  const [log, setLog] = useState(false);
+  const [log, setLog] = useState(window.localStorage.getItem('isLogged'));
 
   useEffect(() => {
     async function fetchData() {
@@ -45,9 +45,6 @@ function App() {
       //it wrong! LATER i fix it!
       setIsLoading(false);
     }, 1000);
-    
-    setLog(window.localStorage.getItem('isLogged'));
-  
   }, []);
 
   const getTotalSum = () => {
@@ -101,6 +98,7 @@ function App() {
           searchValue,
           setSearchValue,
           onChangeSearchInput,
+          setLog
         }}
       >
         <Header checkUserLogin={log}>

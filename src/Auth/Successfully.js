@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styles from "./Successfully.module.scss";
 
+import AppContext from "../components/context";
+import { Link } from "react-router-dom";
+
 export const Successfully = ({ nameUser }) => {
+  const { setLog } = useContext(AppContext);
+
   const redirect = () => {
-    window.location.href = "/"; //this redirect need for renew app cpmponent and renew local storage variable isLogged 
+    setLog(window.localStorage.getItem("isLogged", true)); //this redirect need for renew app cpmponent and renew local storage variable isLogged
   };
+
   return (
     <div className="sneakers">
       <div className={styles.containerCongr}>
@@ -16,7 +22,11 @@ export const Successfully = ({ nameUser }) => {
           <span className={styles.userName}>Hello {nameUser}</span>{" "}
           <h4>Congratulations!</h4>
           <h5> You succsessfull log in!</h5>
-          <button onClick={redirect} className={styles.successfullyBtn}>go on shop</button>
+          <Link to="/">
+            <button onClick={redirect} className={styles.successfullyBtn}>
+              go on shop
+            </button>
+          </Link>
         </div>
       </div>
     </div>
