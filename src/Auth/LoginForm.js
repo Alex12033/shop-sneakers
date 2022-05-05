@@ -8,16 +8,16 @@ import styles from "./LoginForm.module.scss";
 
 import { Successfully } from "./Successfully";
 
-export const LoginForm = ({ checkUserLogin }) => {
+export const LoginForm = () => {
   const [isLogged, setIsLogged] = useState(false);
 
   const [alerts, setAlerts] = useState(false);
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const [users, setUsers] = useState([]);
-  
+
   const [nameUser, setNameUser] = useState("");
 
   useEffect(() => {
@@ -28,8 +28,7 @@ export const LoginForm = ({ checkUserLogin }) => {
       setUsers(data);
     })();
   }, []);
-  console.log(users);
-  checkUserLogin(isLogged);
+  
 
   const isLoggedUser = async () => {
     const findUser = users.find(
@@ -37,8 +36,9 @@ export const LoginForm = ({ checkUserLogin }) => {
     );
 
     if (findUser !== undefined) {
-      setNameUser(findUser.login)
+      setNameUser(findUser.login);
       setIsLogged(true);
+      window.localStorage.setItem("isLogged", true);
     } else {
       setAlerts(true);
 
@@ -46,6 +46,7 @@ export const LoginForm = ({ checkUserLogin }) => {
         setAlerts(false);
       }, 3000);
     }
+    
 
     setLogin("");
     setPassword("");

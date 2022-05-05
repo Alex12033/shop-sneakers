@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 import styles from "./LoginBtn.module.scss";
 
-export const LoginBtn = ({ checkUserLogin }) => {
+export const LoginBtn = ({ checkUserLogin, setLog }) => {
 
   const logOut = () => {
-    
+    setLog(window.localStorage.setItem('isLogged', false))
   };
+
+  console.log(checkUserLogin);
 
   return (
     <Link to={"/LoginForm"}>

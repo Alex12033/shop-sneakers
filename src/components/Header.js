@@ -8,6 +8,7 @@ import style from "./Header.module.scss";
 
 function Header({ children, checkUserLogin }) {
   const { getTotalSum } = useContext(AppContext);
+  console.log(checkUserLogin);
   return (
     <header className={style.header}>
       <Link to="/">

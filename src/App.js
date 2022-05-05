@@ -45,8 +45,9 @@ function App() {
       //it wrong! LATER i fix it!
       setIsLoading(false);
     }, 1000);
-
-    log === true ? setLog(true) : setLog(false);
+    
+    setLog(window.localStorage.getItem('isLogged'));
+  
   }, []);
 
   const getTotalSum = () => {
@@ -87,6 +88,8 @@ function App() {
     setSearchValue(e.target.value);
   };
 
+  console.log(log);
+
   return (
     <div className="wrapper clear">
       <AppContext.Provider
@@ -107,7 +110,7 @@ function App() {
         <Routes>
           <Route
             path="/LoginForm"
-            element={<LoginForm checkUserLogin={(e) => setLog(e)} />}
+            element={<LoginForm />}
             exact
           />
 

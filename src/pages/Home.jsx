@@ -14,7 +14,6 @@ function Home({ onAddToCart, onAddLike, isLoading, isLogged }) {
 
   return (
     <div className="content">
-      {isLogged }
       <div className={style.title_search}>
         <h1 className={style.title}>
           {searchValue ? `Search request: ${searchValue}` : "All Sneakers"}
