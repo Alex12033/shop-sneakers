@@ -22,6 +22,7 @@ export const SignIn = () => {
       alert("Fill in all the fields");
     } else {
       await axios.post("https://sneakers-course.herokuapp.com/api/users", auth);
+      window.location.href = "/LoginForm";
     }
     setLogin("");
     setPassword("");

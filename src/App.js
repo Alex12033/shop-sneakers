@@ -26,7 +26,7 @@ function App() {
 
   const [cartItems, setCartItems] = useState([]);
 
-  const [log, setLog] = useState(true);
+  const [log, setLog] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -46,7 +46,7 @@ function App() {
       setIsLoading(false);
     }, 1000);
 
-    // setLog(false);
+    log === true ? setLog(true) : setLog(false);
   }, []);
 
   const getTotalSum = () => {

@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 import styles from "./LoginBtn.module.scss";
 
-export const LoginBtn = ({ checkUserLogin, setLog }) => {
+export const LoginBtn = ({ checkUserLogin }) => {
 
   const logOut = () => {
-    setLog(false);
+    
   };
 
   return (
