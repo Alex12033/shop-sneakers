@@ -23,7 +23,6 @@ function Favorites() {
   }, []);
 
   const onRemoveFavorites = (obj) => {
-    console.log(obj);
     axios.delete(`https://sneakers-course.herokuapp.com/api/favorites/${obj.id}`);
     setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
   };

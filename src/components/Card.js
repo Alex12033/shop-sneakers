@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
 
-import style from './Card.module.scss'
+import style from "./Card.module.scss";
 
 function Card({
   id,
@@ -21,12 +21,12 @@ function Card({
   function onClickPlus() {
     setChecked(!checked);
     if (checked) {
-      //this if() need for not send same object when user click second time on plus
-      onPlus({ name, price, src, checked, id }); //send info for display card in cart drawer
-    } else {
-      //if unchecked
+      /* this if() need for not send same object when user click second time on plus
+      send info for display card in cart drawer */
       onPlus({ name, price, src, checked, id });
-      console.log({ name, price, src, checked, id });
+    } else {
+      //if unchecked in Home send this obj for delete query
+      onPlus({ name, price, src, checked, id });
     }
   }
 
@@ -60,7 +60,8 @@ function Card({
       <div className={style.card}>
         {onLike && (
           <div className={style.favorite}>
-            <img className={style.plus}
+            <img
+              className={style.plus}
               onClick={onLikeClick}
               src={onFavorite ? "/img/unliked.svg" : "/img/liked.svg"}
               alt="unliked"
@@ -76,7 +77,7 @@ function Card({
             <b>{price}$</b>
             <div>
               {(isLogged || onPlus) && isLogged && (
-                 <img
+                <img
                   className={checked ? `${style.button}` : `${style.checked}`}
                   onClick={onClickPlus}
                   src={checked ? "/img/plus.svg" : "/img/btn-checked.svg"}

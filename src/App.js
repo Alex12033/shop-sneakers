@@ -29,22 +29,19 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      try {
         const data = await axios.get(
-          "https://sneakers-course.web.app/api/items"
-        );
+          "https://sneakers-course.herokuapp.com/items"
+        ).catch(error => console.log("Error in query data", error.toJSON()))
         setCard(data.data);
-      } catch (error) {
-        alert("Error in query data");
-      }
     }
     fetchData();
 
     setTimeout(() => {
-      //it wrong! LATER i fix it!
+      //to use set timeout for fake loading it wrong! LATER i fix it!
       setIsLoading(false);
     }, 1000);
-    setLog(window.localStorage.getItem('isLogged'));
+
+    setLog(window.localStorage.getItem("isLogged"));
   }, []);
 
   const getTotalSum = () => {
@@ -56,36 +53,39 @@ function App() {
   // };
 
   const onAddToCart = async (obj) => {
-    try {
-      if (obj.checked) {
-        setCartItems((prev) => [...prev, obj]);
-        await axios.post("https://sneakers-course.herokuapp.com/api/cart", obj);
-      } else {
-        //if obj.checked = false delete from cart with clicked obj.id
-        console.log("delete from cart");
-        await axios.delete(
-          `https://sneakers-course.herokuapp.com/api/cart/${obj.id}`
+    //if obj.checked = false delete from cart with clicked obj.id and vice versa
+    if (obj.checked) {
+      setCartItems((prev) => [...prev, obj]);
+
+      await axios
+        .post("https://sneakers-course.herokuapp.com/api/cart", obj)
+        .catch((error) =>
+          console.log("Error in process post in cart", error.toJSON())
         );
-        setCartItems((prev) => prev.filter((item) => obj.id !== item.id));
-      }
-    } catch (error) {
-      alert("Error in process post in cart");
+    
+      } else {
+
+      await axios
+        .delete(`https://sneakers-course.herokuapp.com/api/cart/${obj.id}`)
+        .catch((error) =>
+          console.log("Error delete from cart", error.toJSON())
+        );
+
+      setCartItems((prev) => prev.filter((item) => obj.id !== item.id));
     }
   };
 
   const onAddLike = (obj) => {
-    try {
-      axios.post("https://sneakers-course.herokuapp.com/api/favorites", obj);
-    } catch (error) {
-      alert("Error in process adding into favorites");
-    }
+    axios
+      .post("https://sneakers-course.herokuapp.com/api/favorites", obj)
+      .catch((error) =>
+        console.log("Error in process adding into favorites", error.toJSON())
+      );
   };
 
   const onChangeSearchInput = (e) => {
     setSearchValue(e.target.value);
   };
-
-  console.log(log);
 
   return (
     <div className="wrapper clear">
@@ -98,17 +98,13 @@ function App() {
           searchValue,
           setSearchValue,
           onChangeSearchInput,
-          setLog
+          setLog,
         }}
       >
         <Header checkUserLogin={log} setLog={setLog} />
 
         <Routes>
-          <Route
-            path="/LoginForm"
-            element={<LoginForm />}
-            exact
-          />
+          <Route path="/LoginForm" element={<LoginForm />} exact />
 
           {/* <Route path="/Successfull" element={<Successfully />} exact /> */}
 

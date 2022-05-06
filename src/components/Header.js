@@ -10,8 +10,6 @@ import style from "./Header.module.scss";
 function Header({ children, checkUserLogin, setLog }) {
   const { getTotalSum } = useContext(AppContext);
   
-  console.log(checkUserLogin);
-  
   // if (window.performance) {
   //   console.log('skjdbvksdb');
   // }

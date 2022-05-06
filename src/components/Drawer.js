@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -11,14 +11,22 @@ import { Link } from "react-router-dom";
 
 import style from "./Drawer.module.scss";
 
-
-
 function Drawer() {
   const [isOrdered, setIsOsdered] = useState(false);
 
   const { getTotalSum } = useContext(AppContext);
   const { cartItems } = useContext(AppContext);
   const { setCartItems } = useContext(AppContext);
+
+  useEffect(() => {
+    const getCartData = async () => { //elements are formed from the database so that when the page is reloaded, the item do not disappear from the basket
+      const { data } = await axios.get(
+        "https://sneakers-course.herokuapp.com/api/cart"
+      );
+      setCartItems(data); //this state from context which located in app.js and he change state cartItems
+    };
+    getCartData();
+  }, []);
 
   const onOrder = async () => {
     await axios
@@ -58,7 +66,11 @@ function Drawer() {
         <h2>
           Cart
           <Link to="/">
-            <img className={style.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
+            <img
+              className={style.removeBtn}
+              src="/img/btn-remove.svg"
+              alt="Remove"
+            />
           </Link>
         </h2>
 
