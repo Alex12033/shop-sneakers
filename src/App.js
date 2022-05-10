@@ -29,33 +29,10 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const items = await axios
-        .get("https://sneakers-course.herokuapp.com/items")
-        .catch((error) => console.log("Error in query data", error.toJSON()));
-      setCard(items.data);
-
-      const { data } = axios.get("https://sneakers-course-default-rtdb.firebaseio.com/items", {
-        headers: {
-          accept: "application/json, text/plain, */*",
-          "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
-          "cache-control": "no-cache",
-          pragma: "no-cache",
-          "sec-ch-ua":
-            '" Not A;Brand";v="99", "Chromium";v="100", "Google Chrome";v="100"',
-          "sec-ch-ua-mobile": "?0",
-          "sec-ch-ua-platform": '"Windows"',
-          "sec-fetch-dest": "empty",
-          "sec-fetch-mode": "cors",
-          "sec-fetch-site": "cross-site",
-        },
-        referrerPolicy: "strict-origin-when-cross-origin",
-        body: null,
-        method: "GET",
-        mode: "cors",
-        credentials: "omit",
-      });
-
-      console.log(data);
+        const data = await axios.get(
+          "https://sneakers-course.herokuapp.com/items"
+        ).catch(error => console.log("Error in query data", error.toJSON()))
+        setCard(data.data);
     }
     fetchData();
 
@@ -85,7 +62,9 @@ function App() {
         .catch((error) =>
           console.log("Error in process post in cart", error.toJSON())
         );
-    } else {
+    
+      } else {
+
       await axios
         .delete(`https://sneakers-course.herokuapp.com/api/cart/${obj.id}`)
         .catch((error) =>
